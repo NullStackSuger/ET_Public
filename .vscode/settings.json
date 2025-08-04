@@ -1,0 +1,22 @@
+{
+    "dotrush.roslyn.projectOrSolutionFiles": [
+        "d:\\Rider\\Project\\ET\\DotNet\\DotNet.sln",
+        "d:\\Rider\\Project\\ET\\ET.sln",
+        "d:\\Rider\\Project\\ET\\Unity\\Unity.sln",
+        "d:\\Rider\\Project\\ET\\DotNet\\App\\DotNet.App.csproj",
+        "d:\\Rider\\Project\\ET\\DotNet\\Core\\DotNet.Core.csproj",
+        "d:\\Rider\\Project\\ET\\DotNet\\Hotfix\\DotNet.Hotfix.csproj",
+        "d:\\Rider\\Project\\ET\\DotNet\\Loader\\DotNet.Loader.csproj",
+        "d:\\Rider\\Project\\ET\\DotNet\\Model\\DotNet.Model.csproj",
+        "d:\\Rider\\Project\\ET\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj",
+        "d:\\Rider\\Project\\ET\\Tools\\Editor\\Editor.csproj",
+        "d:\\Rider\\Project\\ET\\Unity\\App\\Unity.App.csproj",
+        "d:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj",
+        "d:\\Rider\\Project\\ET\\Unity\\Hotfix\\Unity.Hotfix.csproj",
+        "d:\\Rider\\Project\\ET\\Unity\\HotfixView\\Unity.HotfixView.csproj",
+        "d:\\Rider\\Project\\ET\\Unity\\Loader\\Unity.Loader.csproj",
+        "d:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj",
+        "d:\\Rider\\Project\\ET\\Unity\\ModelView\\Unity.ModelView.csproj",
+        "d:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
+    ]
+}
