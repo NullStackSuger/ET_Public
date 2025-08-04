@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<module name="">
+  <enum name="NumericType" group="cs">
+    <!-- 等级 -->
+    <var name="Level" value="100001" />
+    <!-- 经验 -->
+    <var name="Exp" value="100002" />
+    <!-- 当前血量 -->
+    <var name="Hp" value="200001" />
+    <!-- 最大血量 -->
+    <var name="MaxHp" value="200002" />
+    <var name="MaxHp1" value="2000021" />
+    <var name="MaxHp2" value="2000022" />
+    <var name="MaxHp3" value="2000023" />
+    <var name="MaxHp4" value="2000024" />
+    <var name="MaxHp5" value="2000025" />
+    <var name="MaxHp6" value="2000026" />
+    <!-- 速度 -->
+    <var name="Speed" value="200003" />
+    <var name="Speed1" value="2000031" />
+    <var name="Speed2" value="2000032" />
+    <var name="Speed3" value="2000033" />
+    <var name="Speed4" value="2000034" />
+    <var name="Speed5" value="2000035" />
+    <var name="Speed6" value="2000036" />
+  </enum>
+</module>

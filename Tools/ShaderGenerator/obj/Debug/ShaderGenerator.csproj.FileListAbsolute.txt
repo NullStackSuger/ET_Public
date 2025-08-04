@@ -1,0 +1,14 @@
+D:\Rider\Project\ET\Tools\ShaderGenerator\bin\Debug\ShaderGenerator.deps.json
+D:\Rider\Project\ET\Tools\ShaderGenerator\bin\Debug\ShaderGenerator.dll
+D:\Rider\Project\ET\Tools\ShaderGenerator\bin\Debug\ShaderGenerator.pdb
+D:\Rider\Project\ET\Tools\ShaderGenerator\obj\Debug\ShaderGenerator.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\Tools\ShaderGenerator\obj\Debug\ShaderGenerator.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\Tools\ShaderGenerator\obj\Debug\ShaderGenerator.AssemblyInfo.cs
+D:\Rider\Project\ET\Tools\ShaderGenerator\obj\Debug\ShaderGenerator.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\Tools\ShaderGenerator\obj\Debug\ShaderGenerator.dll
+D:\Rider\Project\ET\Tools\ShaderGenerator\obj\Debug\ShaderGenerator.pdb
+D:\Rider\Project\ET\Tools\ShaderGenerator\bin\Debug\ShaderGenerator.exe
+D:\Rider\Project\ET\Tools\ShaderGenerator\bin\Debug\ShaderGenerator.runtimeconfig.json
+D:\Rider\Project\ET\Tools\ShaderGenerator\obj\Debug\refint\ShaderGenerator.dll
+D:\Rider\Project\ET\Tools\ShaderGenerator\obj\Debug\ShaderGenerator.genruntimeconfig.cache
+D:\Rider\Project\ET\Tools\ShaderGenerator\obj\Debug\ref\ShaderGenerator.dll

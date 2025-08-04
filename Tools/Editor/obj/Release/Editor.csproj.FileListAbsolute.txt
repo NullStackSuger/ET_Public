@@ -1,0 +1,16 @@
+D:\Rider\Project\ET\Bin\Editor.exe
+D:\Rider\Project\ET\Bin\Editor.deps.json
+D:\Rider\Project\ET\Bin\Editor.runtimeconfig.json
+D:\Rider\Project\ET\Bin\Editor.dll
+D:\Rider\Project\ET\Bin\Editor.pdb
+D:\Rider\Project\ET\Tools\Editor\obj\Release\Editor.csproj.AssemblyReference.cache
+D:\Rider\Project\ET\Tools\Editor\obj\Release\Editor.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\Tools\Editor\obj\Release\Editor.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\Tools\Editor\obj\Release\Editor.AssemblyInfo.cs
+D:\Rider\Project\ET\Tools\Editor\obj\Release\Editor.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\Tools\Editor\obj\Release\Editor.csproj.Up2Date
+D:\Rider\Project\ET\Tools\Editor\obj\Release\Editor.dll
+D:\Rider\Project\ET\Tools\Editor\obj\Release\refint\Editor.dll
+D:\Rider\Project\ET\Tools\Editor\obj\Release\Editor.pdb
+D:\Rider\Project\ET\Tools\Editor\obj\Release\Editor.genruntimeconfig.cache
+D:\Rider\Project\ET\Tools\Editor\obj\Release\ref\Editor.dll

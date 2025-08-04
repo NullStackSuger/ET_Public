@@ -1,0 +1,10 @@
+D:\Rider\Project\ET\Tools\Analyzer\bin\Debug\Analyzer.deps.json
+D:\Rider\Project\ET\Tools\Analyzer\bin\Debug\Analyzer.dll
+D:\Rider\Project\ET\Tools\Analyzer\bin\Debug\Analyzer.pdb
+D:\Rider\Project\ET\Tools\Analyzer\obj\Debug\Analyzer.csproj.AssemblyReference.cache
+D:\Rider\Project\ET\Tools\Analyzer\obj\Debug\Analyzer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\Tools\Analyzer\obj\Debug\Analyzer.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\Tools\Analyzer\obj\Debug\Analyzer.AssemblyInfo.cs
+D:\Rider\Project\ET\Tools\Analyzer\obj\Debug\Analyzer.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\Tools\Analyzer\obj\Debug\Analyzer.dll
+D:\Rider\Project\ET\Tools\Analyzer\obj\Debug\Analyzer.pdb

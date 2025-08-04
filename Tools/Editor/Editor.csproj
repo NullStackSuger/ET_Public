@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <RootNamespace>ET.Editor</RootNamespace>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <DefineConstants>UNITY;EDITOR</DefineConstants>
+        <OutputPath>..\..\Bin\</OutputPath>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <DefineConstants>UNITY</DefineConstants>
+        <OutputPath>..\..\Bin\</OutputPath>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Tools\Analyzer\Analyzer.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <ProjectReference Include="..\..\Tools\SourceGenerator\SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <ProjectReference Include="..\..\Unity\Core\Unity.Core.csproj" />
+        <ProjectReference Include="..\..\Unity\HotfixView\Unity.HotfixView.csproj" />
+        <ProjectReference Include="..\..\Unity\Hotfix\Unity.Hotfix.csproj" />
+        <ProjectReference Include="..\..\Unity\ModelView\Unity.ModelView.csproj" />
+        <ProjectReference Include="..\..\Unity\Model\Unity.Model.csproj" />
+        <ProjectReference Include="..\..\Unity\ThirdParty\Unity.ThirdParty.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="..\..\Asset\">
+        <Link>Asset</Link>
+      </Folder>
+    </ItemGroup>
+
+</Project>
