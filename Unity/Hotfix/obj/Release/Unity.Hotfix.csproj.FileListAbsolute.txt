@@ -1,0 +1,13 @@
+D:\Rider\Project\ET\Bin\Unity.Hotfix.deps.json
+D:\Rider\Project\ET\Bin\Unity.Hotfix.dll
+D:\Rider\Project\ET\Bin\Unity.Hotfix.pdb
+D:\Rider\Project\ET\Unity\Hotfix\obj\Release\Unity.Hotfix.csproj.AssemblyReference.cache
+D:\Rider\Project\ET\Unity\Hotfix\obj\Release\Unity.Hotfix.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\Unity\Hotfix\obj\Release\Unity.Hotfix.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\Unity\Hotfix\obj\Release\Unity.Hotfix.AssemblyInfo.cs
+D:\Rider\Project\ET\Unity\Hotfix\obj\Release\Unity.Hotfix.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\Unity\Hotfix\obj\Release\Unity.Ho.75DF0381.Up2Date
+D:\Rider\Project\ET\Unity\Hotfix\obj\Release\Unity.Hotfix.dll
+D:\Rider\Project\ET\Unity\Hotfix\obj\Release\refint\Unity.Hotfix.dll
+D:\Rider\Project\ET\Unity\Hotfix\obj\Release\Unity.Hotfix.pdb
+D:\Rider\Project\ET\Unity\Hotfix\obj\Release\ref\Unity.Hotfix.dll

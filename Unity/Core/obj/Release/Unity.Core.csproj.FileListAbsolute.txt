@@ -1,0 +1,13 @@
+D:\Rider\Project\ET\Bin\Unity.Core.deps.json
+D:\Rider\Project\ET\Bin\Unity.Core.dll
+D:\Rider\Project\ET\Bin\Unity.Core.pdb
+D:\Rider\Project\ET\Unity\Core\obj\Release\Unity.Core.csproj.AssemblyReference.cache
+D:\Rider\Project\ET\Unity\Core\obj\Release\Unity.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\Unity\Core\obj\Release\Unity.Core.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\Unity\Core\obj\Release\Unity.Core.AssemblyInfo.cs
+D:\Rider\Project\ET\Unity\Core\obj\Release\Unity.Core.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\Unity\Core\obj\Release\Unity.Core.csproj.Up2Date
+D:\Rider\Project\ET\Unity\Core\obj\Release\Unity.Core.dll
+D:\Rider\Project\ET\Unity\Core\obj\Release\refint\Unity.Core.dll
+D:\Rider\Project\ET\Unity\Core\obj\Release\Unity.Core.pdb
+D:\Rider\Project\ET\Unity\Core\obj\Release\ref\Unity.Core.dll

@@ -1,0 +1,16 @@
+D:\Rider\Project\ET\Bin\Unity.App.exe
+D:\Rider\Project\ET\Bin\Unity.App.deps.json
+D:\Rider\Project\ET\Bin\Unity.App.runtimeconfig.json
+D:\Rider\Project\ET\Bin\Unity.App.dll
+D:\Rider\Project\ET\Bin\Unity.App.pdb
+D:\Rider\Project\ET\Unity\App\obj\Release\Unity.App.csproj.AssemblyReference.cache
+D:\Rider\Project\ET\Unity\App\obj\Release\Unity.App.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\Unity\App\obj\Release\Unity.App.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\Unity\App\obj\Release\Unity.App.AssemblyInfo.cs
+D:\Rider\Project\ET\Unity\App\obj\Release\Unity.App.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\Unity\App\obj\Release\Unity.App.csproj.Up2Date
+D:\Rider\Project\ET\Unity\App\obj\Release\Unity.App.dll
+D:\Rider\Project\ET\Unity\App\obj\Release\refint\Unity.App.dll
+D:\Rider\Project\ET\Unity\App\obj\Release\Unity.App.pdb
+D:\Rider\Project\ET\Unity\App\obj\Release\Unity.App.genruntimeconfig.cache
+D:\Rider\Project\ET\Unity\App\obj\Release\ref\Unity.App.dll

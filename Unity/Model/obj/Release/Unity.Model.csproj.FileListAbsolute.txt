@@ -1,0 +1,13 @@
+D:\Rider\Project\ET\Bin\Unity.Model.deps.json
+D:\Rider\Project\ET\Bin\Unity.Model.dll
+D:\Rider\Project\ET\Bin\Unity.Model.pdb
+D:\Rider\Project\ET\Unity\Model\obj\Release\Unity.Model.csproj.AssemblyReference.cache
+D:\Rider\Project\ET\Unity\Model\obj\Release\Unity.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\Unity\Model\obj\Release\Unity.Model.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\Unity\Model\obj\Release\Unity.Model.AssemblyInfo.cs
+D:\Rider\Project\ET\Unity\Model\obj\Release\Unity.Model.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\Unity\Model\obj\Release\Unity.Mo.60FFB049.Up2Date
+D:\Rider\Project\ET\Unity\Model\obj\Release\Unity.Model.dll
+D:\Rider\Project\ET\Unity\Model\obj\Release\refint\Unity.Model.dll
+D:\Rider\Project\ET\Unity\Model\obj\Release\Unity.Model.pdb
+D:\Rider\Project\ET\Unity\Model\obj\Release\ref\Unity.Model.dll

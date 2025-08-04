@@ -1,0 +1,13 @@
+D:\Rider\Project\ET\Bin\Unity.Loader.deps.json
+D:\Rider\Project\ET\Bin\Unity.Loader.dll
+D:\Rider\Project\ET\Bin\Unity.Loader.pdb
+D:\Rider\Project\ET\Unity\Loader\obj\Release\Unity.Loader.csproj.AssemblyReference.cache
+D:\Rider\Project\ET\Unity\Loader\obj\Release\Unity.Loader.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\Unity\Loader\obj\Release\Unity.Loader.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\Unity\Loader\obj\Release\Unity.Loader.AssemblyInfo.cs
+D:\Rider\Project\ET\Unity\Loader\obj\Release\Unity.Loader.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\Unity\Loader\obj\Release\Unity.Lo.F18D09AE.Up2Date
+D:\Rider\Project\ET\Unity\Loader\obj\Release\Unity.Loader.dll
+D:\Rider\Project\ET\Unity\Loader\obj\Release\refint\Unity.Loader.dll
+D:\Rider\Project\ET\Unity\Loader\obj\Release\Unity.Loader.pdb
+D:\Rider\Project\ET\Unity\Loader\obj\Release\ref\Unity.Loader.dll
