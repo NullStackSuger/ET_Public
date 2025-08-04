@@ -1,0 +1,16 @@
+D:\Rider\Project\ET\Bin\DotNet.App.exe
+D:\Rider\Project\ET\Bin\DotNet.App.deps.json
+D:\Rider\Project\ET\Bin\DotNet.App.runtimeconfig.json
+D:\Rider\Project\ET\Bin\DotNet.App.dll
+D:\Rider\Project\ET\Bin\DotNet.App.pdb
+D:\Rider\Project\ET\DotNet\App\obj\Release\DotNet.App.csproj.AssemblyReference.cache
+D:\Rider\Project\ET\DotNet\App\obj\Release\DotNet.App.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\DotNet\App\obj\Release\DotNet.App.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\DotNet\App\obj\Release\DotNet.App.AssemblyInfo.cs
+D:\Rider\Project\ET\DotNet\App\obj\Release\DotNet.App.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\DotNet\App\obj\Release\DotNet.App.csproj.Up2Date
+D:\Rider\Project\ET\DotNet\App\obj\Release\DotNet.App.dll
+D:\Rider\Project\ET\DotNet\App\obj\Release\refint\DotNet.App.dll
+D:\Rider\Project\ET\DotNet\App\obj\Release\DotNet.App.pdb
+D:\Rider\Project\ET\DotNet\App\obj\Release\DotNet.App.genruntimeconfig.cache
+D:\Rider\Project\ET\DotNet\App\obj\Release\ref\DotNet.App.dll

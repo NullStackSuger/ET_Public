@@ -1,0 +1,13 @@
+D:\Rider\Project\ET\Bin\DotNet.Loader.deps.json
+D:\Rider\Project\ET\Bin\DotNet.Loader.dll
+D:\Rider\Project\ET\Bin\DotNet.Loader.pdb
+D:\Rider\Project\ET\DotNet\Loader\obj\Release\DotNet.Loader.csproj.AssemblyReference.cache
+D:\Rider\Project\ET\DotNet\Loader\obj\Release\DotNet.Loader.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\DotNet\Loader\obj\Release\DotNet.Loader.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\DotNet\Loader\obj\Release\DotNet.Loader.AssemblyInfo.cs
+D:\Rider\Project\ET\DotNet\Loader\obj\Release\DotNet.Loader.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\DotNet\Loader\obj\Release\DotNet.L.DA009C55.Up2Date
+D:\Rider\Project\ET\DotNet\Loader\obj\Release\DotNet.Loader.dll
+D:\Rider\Project\ET\DotNet\Loader\obj\Release\refint\DotNet.Loader.dll
+D:\Rider\Project\ET\DotNet\Loader\obj\Release\DotNet.Loader.pdb
+D:\Rider\Project\ET\DotNet\Loader\obj\Release\ref\DotNet.Loader.dll

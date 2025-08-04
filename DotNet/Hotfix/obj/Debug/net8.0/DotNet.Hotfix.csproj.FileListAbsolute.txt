@@ -1,0 +1,11 @@
+D:\Rider\Project\ET\DotNet\Hotfix\bin\Debug\net8.0\DotNet.Hotfix.deps.json
+D:\Rider\Project\ET\DotNet\Hotfix\bin\Debug\net8.0\DotNet.Hotfix.dll
+D:\Rider\Project\ET\DotNet\Hotfix\bin\Debug\net8.0\DotNet.Hotfix.pdb
+D:\Rider\Project\ET\DotNet\Hotfix\obj\Debug\net8.0\DotNet.Hotfix.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\DotNet\Hotfix\obj\Debug\net8.0\DotNet.Hotfix.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\DotNet\Hotfix\obj\Debug\net8.0\DotNet.Hotfix.AssemblyInfo.cs
+D:\Rider\Project\ET\DotNet\Hotfix\obj\Debug\net8.0\DotNet.Hotfix.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\DotNet\Hotfix\obj\Debug\net8.0\DotNet.Hotfix.dll
+D:\Rider\Project\ET\DotNet\Hotfix\obj\Debug\net8.0\refint\DotNet.Hotfix.dll
+D:\Rider\Project\ET\DotNet\Hotfix\obj\Debug\net8.0\DotNet.Hotfix.pdb
+D:\Rider\Project\ET\DotNet\Hotfix\obj\Debug\net8.0\ref\DotNet.Hotfix.dll

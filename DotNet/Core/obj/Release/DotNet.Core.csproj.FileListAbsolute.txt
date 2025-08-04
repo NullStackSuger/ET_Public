@@ -1,0 +1,13 @@
+D:\Rider\Project\ET\Bin\DotNet.Core.deps.json
+D:\Rider\Project\ET\Bin\DotNet.Core.dll
+D:\Rider\Project\ET\Bin\DotNet.Core.pdb
+D:\Rider\Project\ET\DotNet\Core\obj\Release\DotNet.Core.csproj.AssemblyReference.cache
+D:\Rider\Project\ET\DotNet\Core\obj\Release\DotNet.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\DotNet\Core\obj\Release\DotNet.Core.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\DotNet\Core\obj\Release\DotNet.Core.AssemblyInfo.cs
+D:\Rider\Project\ET\DotNet\Core\obj\Release\DotNet.Core.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\DotNet\Core\obj\Release\DotNet.C.0F4929AF.Up2Date
+D:\Rider\Project\ET\DotNet\Core\obj\Release\DotNet.Core.dll
+D:\Rider\Project\ET\DotNet\Core\obj\Release\refint\DotNet.Core.dll
+D:\Rider\Project\ET\DotNet\Core\obj\Release\DotNet.Core.pdb
+D:\Rider\Project\ET\DotNet\Core\obj\Release\ref\DotNet.Core.dll

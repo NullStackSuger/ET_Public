@@ -1,0 +1,11 @@
+D:\Rider\Project\ET\DotNet\ThirdParty\bin\Debug\net8.0\DotNet.ThirdParty.deps.json
+D:\Rider\Project\ET\DotNet\ThirdParty\bin\Debug\net8.0\DotNet.ThirdParty.dll
+D:\Rider\Project\ET\DotNet\ThirdParty\bin\Debug\net8.0\DotNet.ThirdParty.pdb
+D:\Rider\Project\ET\DotNet\ThirdParty\obj\Debug\net8.0\DotNet.ThirdParty.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\DotNet\ThirdParty\obj\Debug\net8.0\DotNet.ThirdParty.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\DotNet\ThirdParty\obj\Debug\net8.0\DotNet.ThirdParty.AssemblyInfo.cs
+D:\Rider\Project\ET\DotNet\ThirdParty\obj\Debug\net8.0\DotNet.ThirdParty.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\DotNet\ThirdParty\obj\Debug\net8.0\DotNet.ThirdParty.dll
+D:\Rider\Project\ET\DotNet\ThirdParty\obj\Debug\net8.0\refint\DotNet.ThirdParty.dll
+D:\Rider\Project\ET\DotNet\ThirdParty\obj\Debug\net8.0\DotNet.ThirdParty.pdb
+D:\Rider\Project\ET\DotNet\ThirdParty\obj\Debug\net8.0\ref\DotNet.ThirdParty.dll

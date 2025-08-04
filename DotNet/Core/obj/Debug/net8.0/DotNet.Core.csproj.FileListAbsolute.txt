@@ -1,0 +1,11 @@
+D:\Rider\Project\ET\DotNet\Core\bin\Debug\net8.0\DotNet.Core.deps.json
+D:\Rider\Project\ET\DotNet\Core\bin\Debug\net8.0\DotNet.Core.dll
+D:\Rider\Project\ET\DotNet\Core\bin\Debug\net8.0\DotNet.Core.pdb
+D:\Rider\Project\ET\DotNet\Core\obj\Debug\net8.0\DotNet.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\DotNet\Core\obj\Debug\net8.0\DotNet.Core.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\DotNet\Core\obj\Debug\net8.0\DotNet.Core.AssemblyInfo.cs
+D:\Rider\Project\ET\DotNet\Core\obj\Debug\net8.0\DotNet.Core.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\DotNet\Core\obj\Debug\net8.0\DotNet.Core.dll
+D:\Rider\Project\ET\DotNet\Core\obj\Debug\net8.0\refint\DotNet.Core.dll
+D:\Rider\Project\ET\DotNet\Core\obj\Debug\net8.0\DotNet.Core.pdb
+D:\Rider\Project\ET\DotNet\Core\obj\Debug\net8.0\ref\DotNet.Core.dll

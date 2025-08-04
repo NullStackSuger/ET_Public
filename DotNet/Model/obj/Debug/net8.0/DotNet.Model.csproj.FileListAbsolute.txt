@@ -1,0 +1,11 @@
+D:\Rider\Project\ET\DotNet\Model\bin\Debug\net8.0\DotNet.Model.deps.json
+D:\Rider\Project\ET\DotNet\Model\bin\Debug\net8.0\DotNet.Model.dll
+D:\Rider\Project\ET\DotNet\Model\bin\Debug\net8.0\DotNet.Model.pdb
+D:\Rider\Project\ET\DotNet\Model\obj\Debug\net8.0\DotNet.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rider\Project\ET\DotNet\Model\obj\Debug\net8.0\DotNet.Model.AssemblyInfoInputs.cache
+D:\Rider\Project\ET\DotNet\Model\obj\Debug\net8.0\DotNet.Model.AssemblyInfo.cs
+D:\Rider\Project\ET\DotNet\Model\obj\Debug\net8.0\DotNet.Model.csproj.CoreCompileInputs.cache
+D:\Rider\Project\ET\DotNet\Model\obj\Debug\net8.0\DotNet.Model.dll
+D:\Rider\Project\ET\DotNet\Model\obj\Debug\net8.0\refint\DotNet.Model.dll
+D:\Rider\Project\ET\DotNet\Model\obj\Debug\net8.0\DotNet.Model.pdb
+D:\Rider\Project\ET\DotNet\Model\obj\Debug\net8.0\ref\DotNet.Model.dll
