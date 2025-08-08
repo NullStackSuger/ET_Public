@@ -9,7 +9,7 @@ public static partial class ViewObjectSystem
         self.name = a;
     }
     
-    public static IEnumerable<ViewObject> Foreach(this ViewObjectComponent self)
+    public static IEnumerable<ViewObject> Foreach(this ViewObject self)
     {
         foreach (ViewObject child in self.Children.Values)
         {
@@ -31,5 +31,14 @@ public static partial class ViewObjectSystem
                 }
             }
         }
+    }
+
+    public static ViewObject Find(this ViewObject self, string name)
+    {
+        foreach (ViewObject child in self.Foreach())
+        {
+            if (child.name == name) return child;
+        }
+        return null;
     }
 }

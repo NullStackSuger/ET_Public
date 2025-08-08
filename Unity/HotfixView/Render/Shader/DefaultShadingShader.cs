@@ -21,6 +21,7 @@ public class DefaultShadingShader : AShaderHandler
         renderComponent.device.UpdateBuffer(info.indexBuffer, 0, meshComponent.meshInfo.indices);
         info.vertexBuffer = renderComponent.device.ResourceFactory.CreateBuffer(new BufferDescription((uint)(vs.Length * Marshal.SizeOf<ShadingVertex>()), BufferUsage.VertexBuffer));
         renderComponent.device.UpdateBuffer(info.vertexBuffer, 0, vs);
+        renderComponent.Set("Vertices", vs);
         
         // Update Uniform Buffer
         DirectionLightComponent light = DirectionLightComponent.Main;
@@ -94,6 +95,17 @@ public class DefaultShadingShader : AShaderHandler
 
     public override void Update(RenderComponent renderComponent, MeshComponent meshComponent, MeshRenderInfo info)
     {
+        // Update Vertex
+        if (meshComponent.Parent.GetComponent(out AnimatorComponent animatorComponent))
+        {
+            var vs = renderComponent.Get<ShadingVertex[]>("Vertices");
+            for (int i = 0; i < animatorComponent.positions.Length; i++)
+            {
+                vs[i].position = animatorComponent.positions[i];
+            }
+            renderComponent.device.UpdateBuffer(info.vertexBuffer, 0, vs);
+        }
+        
         // Update M VP Uniform Buffer
         DirectionLightComponent light = DirectionLightComponent.Main;
         if (light == null) return;

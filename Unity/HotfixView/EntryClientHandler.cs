@@ -40,9 +40,10 @@ public class EntryClientHandler : AEvent<Scene, EntryClient>
         var lightCamera = light.AddComponent<OrthographicCameraComponent, float, float, float, float>(window.Aspect(), 10, 0.1f, 100f);
         DirectionLightComponent.Main = light.AddComponent<DirectionLightComponent, float, Color, OrthographicCameraComponent>(0.8f, Color.White, lightCamera);
 
-        ViewObject cube = objs.AddChild<ViewObject, string>("cube");
-        cube.AddComponent<TransformComponent, Vector3, Quaternion, Vector3>(new Vector3(0, 10, 0), new Vector3(45, 0, 45).ToQuaternion(), Vector3.One);
-        cube.AddComponent<MeshComponent, string>("Objs/cube.obj");
+        ViewObject cube = MeshComponentSystem.Load("Objs/cube.obj", objs);
+        TransformComponent transformComponent = cube.GetComponent<TransformComponent>();
+        transformComponent.position = new Vector3(0, 0, 5);
+        transformComponent.rotation = new Vector3(45, 0, 45).ToQuaternion();
         PhysX.Material mat = PhysicsComponent.Instance.physics.CreateMaterial(0.5f, 0.5f, 0.6f);
         cube.AddComponent<PhysicsRigidActorComponent, Vector3, float, PhysX.Material, float>(Vector3.Zero, 1f, mat, 1f);
         
