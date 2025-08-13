@@ -1,7 +1,7 @@
 using System.Numerics;
 using Assimp;
 using Face = Assimp.Face;
-using Quaternion = System.Numerics.Quaternion;
+using Matrix4x4 = Assimp.Matrix4x4;
 
 namespace ET.Client;
 
@@ -58,7 +58,7 @@ public static partial class MeshComponentSystem
 
             // Transform
             scene.RootNode.FindNode(mesh.Name).Transform.Decompose(out Vector3D scale, out Assimp.Quaternion rotation, out Vector3D position);
-            obj.AddComponent<TransformComponent, Vector3, Quaternion, Vector3>(position.ToVector3(), rotation.ToQuaternion(), scale.ToVector3());
+            obj.AddComponent<TransformComponent, Vector3, System.Numerics.Quaternion, Vector3>(position.ToVector3(), rotation.ToQuaternion(), scale.ToVector3());
             
             #region Mesh
             MeshInfo meshInfo = new MeshInfo();
@@ -133,7 +133,7 @@ public static partial class MeshComponentSystem
             {
                 { typeof(ShadowRenderPass), typeof(DefaultShadowShader) },
                 { typeof(ShadingRenderPass), typeof(DefaultShadingShader) }
-            }).AddToDirtyMesh();
+            });
             #endregion
 
             if (mesh.HasBones)
@@ -167,20 +167,46 @@ public static partial class MeshComponentSystem
     {
         return new Vector2(v.X, v.Y);
     }
-    public static Quaternion ToQuaternion(this Assimp.Quaternion q)
+    public static Matrix4x4 FromQuaternion(this Assimp.Quaternion q)
     {
-        return new Quaternion(q.X, q.Y, q.Z, q.W);
+        // 标准化四元数
+        float length = MathF.Sqrt(q.X * q.X + q.Y * q.Y + q.Z * q.Z + q.W * q.W);
+        if (length > 0)
+        {
+            q.X /= length;
+            q.Y /= length;
+            q.Z /= length;
+            q.W /= length;
+        }
+    
+        // 四元数到旋转矩阵的转换（列主序）
+        float xx = q.X * q.X;
+        float xy = q.X * q.Y;
+        float xz = q.X * q.Z;
+        float xw = q.X * q.W;
+        float yy = q.Y * q.Y;
+        float yz = q.Y * q.Z;
+        float yw = q.Y * q.W;
+        float zz = q.Z * q.Z;
+        float zw = q.Z * q.W;
+    
+        return new Matrix4x4(
+            1.0f - 2.0f * (yy + zz), 2.0f * (xy - zw), 2.0f * (xz + yw), 0.0f,
+            2.0f * (xy + zw), 1.0f - 2.0f * (xx + zz), 2.0f * (yz - xw), 0.0f,
+            2.0f * (xz - yw), 2.0f * (yz + xw), 1.0f - 2.0f * (xx + yy), 0.0f,
+            0.0f, 0.0f, 0.0f, 1.0f
+        );
     }
-    public static Vector4 ToVector4(this Assimp.Color4D c)
+    public static System.Numerics.Quaternion ToQuaternion(this Assimp.Quaternion q)
+    {
+        return new System.Numerics.Quaternion(q.X, q.Y, q.Z, q.W);
+    }
+    public static Assimp.Quaternion ToQuaternion(this System.Numerics.Quaternion q)
+    {
+        return new Assimp.Quaternion(q.W, q.X, q.Y, q.Z);
+    }
+    public static Vector4 ToVector4(this Color4D c)
     {
         return new Vector4(c.R, c.G, c.B, c.A);
-    }
-    public static System.Numerics.Matrix4x4 ToMatrix4x4(this Assimp.Matrix4x4 mat)
-    {
-        return new System.Numerics.Matrix4x4(mat.A1, mat.A2, mat.A3, mat.A4, mat.B1, mat.B2, mat.B3, mat.B4, mat.C1, mat.C2, mat.C3, mat.C4, mat.D1, mat.D2, mat.D3, mat.D4);
-    }
-    public static Assimp.Matrix4x4 ToMatrix4x4(this System.Numerics.Matrix4x4 mat)
-    {
-        return new Assimp.Matrix4x4(mat.M11, mat.M21, mat.M31, mat.M41, mat.M12, mat.M22, mat.M32, mat.M42, mat.M13, mat.M23, mat.M33, mat.M43, mat.M14, mat.M24, mat.M34, mat.M44);
     }
 }

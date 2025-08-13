@@ -1,7 +1,4 @@
-using System.Numerics;
 using Assimp;
-using Matrix4x4 = System.Numerics.Matrix4x4;
-using Quaternion = System.Numerics.Quaternion;
 
 namespace ET.Client;
 
@@ -14,98 +11,86 @@ public static partial class AnimatorComponentSystem
         self.animations = new();
         foreach (Animation animation in animations)
         {
+            if (animation.Name == "")
+                animation.Name = "Default Animation";
             self.animations.Add(animation.Name, animation);
         }
         
         MeshComponent meshComponent = self.Parent.GetComponent<MeshComponent>();
-        self.positions = meshComponent.meshInfo.positions;
+        self.positions = [..meshComponent.meshInfo.positions];
     }
 
     [EntitySystem]
     private static void Serialize(this AnimatorComponent self)
     {
-        
     }
 
     [EntitySystem]
     private static void Deserialize(this AnimatorComponent self)
     {
-        
     }
 
     [EntitySystem]
     private static void LateUpdate(this AnimatorComponent self)
     {
-        if (self.tmp > 30) return;
-        self.PlayTest(self.tmp);
-        self.tmp += 0.1f;
+        if (!self.animations.TryGetValue(self.currentName, out Animation animation)) return;
         
-        Console.WriteLine(self.tmp);
+        float maxTime = (float)(animation.DurationInTicks / animation.TicksPerSecond);
+        self.currentTime = Math.Clamp(self.currentTime + 0.01f, 0, maxTime); // TODO 动画系统/动画增量应该用DeltaTime
+        
+        self.Play(self.currentName, self.currentTime);
+
+        if (self.currentTime >= maxTime) self.currentTime = 0;
     }
 
-    public static void PlayTest(this AnimatorComponent self, float time)
+    public static void Play(this AnimatorComponent self, string animationName)
     {
-        MeshComponent meshComponent = self.Parent.GetComponent<MeshComponent>();
-        JointComponent jointComponent = self.Parent.GetComponent<JointComponent>();
+        if (!self.animations.TryGetValue(animationName, out Animation animation)) return;
         
-        var positions = meshComponent.meshInfo.positions;
-        var jointMap = jointComponent.jointMap;
-
-        // TODO 动画系统/动画的数据我不清楚怎么使用
-        /*jointMap["Head"].local.B4 += -10 * MathF.Cos(time * MathF.PI / 180);
-        jointMap["Head"].local.C4 += 10 * MathF.Cos(time * MathF.PI / 180);*/
-        jointMap["Head"].local.A4 = time;
-        
-        jointComponent.UpdateModel();
-        
-        self.positions = new Vector3[positions.Length];
-        foreach (var joint in jointMap.Values)
-        {
-            foreach (VertexWeight vertexWeight in joint.vertexWeights)
-            {
-                var vertex = positions[vertexWeight.VertexID];
-                
-                self.positions[vertexWeight.VertexID] += vertexWeight.Weight * (joint.model * joint.offset * vertex.ToVector3()).ToVector3();
-            }
-        }
+        self.currentName = animationName;
+        self.currentTime = 0;
     }
 
-    public static void Play(this AnimatorComponent self, float time)
+    public static void Play(this AnimatorComponent self, string animationName, float time)
     {
+        if (!self.animations.TryGetValue(animationName, out Animation animation)) return;
+        
         MeshComponent meshComponent = self.Parent.GetComponent<MeshComponent>();
         JointComponent jointComponent = self.Parent.GetComponent<JointComponent>();
-     
-        var animation = self.animations.Values.First();
         var positions = meshComponent.meshInfo.positions;
         var jointMap = jointComponent.jointMap;
+        var modelMap = new Dictionary<string, Matrix4x4>();
         
         foreach (NodeAnimationChannel channel in animation.NodeAnimationChannels)
         {
             string name = channel.NodeName;
-            Vector3 position = GetVector3(time, channel.PositionKeys);
-            Quaternion rotation = GetQuaternion(time, channel.RotationKeys);
-            Vector3 scale = GetVector3(time, channel.ScalingKeys);
+            Vector3D position = Lerp(time, channel.PositionKeys).ToVector3();
+            Quaternion rotation = SLerp(time, channel.RotationKeys).ToQuaternion();
+            Vector3D scale = Lerp(time, channel.ScalingKeys).ToVector3();
             JointComponent.JointInfo joint = jointMap[name];
-            
-            joint.local = (Matrix4x4.CreateScale(scale) *
-                           Matrix4x4.CreateFromQuaternion(rotation) *
-                           Matrix4x4.CreateTranslation(position)).ToMatrix4x4();   
+            joint.local = Matrix4x4.FromScaling(scale) * rotation.FromQuaternion() * Matrix4x4.FromTranslation(position);
         }
-
-        jointComponent.UpdateModel();
-
-        self.positions = new Vector3[positions.Length];
+        
+        for (int i = 0; i < self.positions.Count; i++)
+        {
+            self.positions[i] = System.Numerics.Vector3.Zero;
+        }
         foreach (var joint in jointMap.Values)
         {
             foreach (VertexWeight vertexWeight in joint.vertexWeights)
             {
                 var vertex = positions[vertexWeight.VertexID];
+
+                if (!modelMap.ContainsKey(joint.name))
+                {
+                    modelMap.Add(joint.name, joint.LocalToWorld());
+                }
                 
-                self.positions[vertexWeight.VertexID] += vertexWeight.Weight * (joint.model * joint.offset * vertex.ToVector3()).ToVector3();
+                self.positions[vertexWeight.VertexID] += vertexWeight.Weight * (joint.offset * modelMap[joint.name] * vertex.ToVector3()).ToVector3();
             }
         }
-
-        static Vector3 GetVector3(float time, List<VectorKey> keys)
+        
+        static System.Numerics.Vector3 Lerp(float time, List<VectorKey> keys)
         {
             int preFrame = -1;
             int nextFrame = -1;
@@ -134,9 +119,9 @@ public static partial class AnimatorComponentSystem
             }
 
             float lerp = (float)((time - keys[preFrame].Time) / (keys[nextFrame].Time - keys[preFrame].Time));
-            return Vector3.Lerp(keys[preFrame].Value.ToVector3(), keys[nextFrame].Value.ToVector3(), lerp);
+            return System.Numerics.Vector3.Lerp(keys[preFrame].Value.ToVector3(), keys[nextFrame].Value.ToVector3(), lerp);
         }
-        static Quaternion GetQuaternion(float time, List<QuaternionKey> keys)
+        static System.Numerics.Quaternion SLerp(float time, List<QuaternionKey> keys)
         {
             int preFrame = -1;
             int nextFrame = -1;
@@ -165,7 +150,7 @@ public static partial class AnimatorComponentSystem
             }
 
             float lerp = (float)((time - keys[preFrame].Time) / (keys[nextFrame].Time - keys[preFrame].Time));
-            return Quaternion.Slerp(keys[preFrame].Value.ToQuaternion(), keys[nextFrame].Value.ToQuaternion(), lerp);
+            return System.Numerics.Quaternion.Slerp(keys[preFrame].Value.ToQuaternion(), keys[nextFrame].Value.ToQuaternion(), lerp);
         }
     }
 }

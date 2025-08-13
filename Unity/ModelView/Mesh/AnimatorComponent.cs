@@ -6,6 +6,8 @@ namespace ET.Client;
 public class AnimatorComponent : Entity, IAwake<List<Animation>>, ISerialize, IDeserialize, ILateUpdate
 {
     public Dictionary<string, Animation> animations;
-    public float tmp;
-    public Vector3[] positions;
+    
+    public List<Vector3> positions;
+    public string currentName = "";
+    public float currentTime;
 }

@@ -17,10 +17,6 @@ public class JointComponent : Entity, IAwake<List<Bone>, Assimp.Scene>, ISeriali
         /// </summary>
         public Matrix4x4 local;
         /// <summary>
-        /// 当前时间目标关节到模型空间矩阵
-        /// </summary>
-        public Matrix4x4 model;
-        /// <summary>
         /// 初始时间模型空间到目标关节矩阵
         /// </summary>
         public Matrix4x4 offset;
@@ -28,13 +24,26 @@ public class JointComponent : Entity, IAwake<List<Bone>, Assimp.Scene>, ISeriali
         public JointInfo parent = null;
         public List<JointInfo> children = new();
 
-        public JointInfo(Bone bone, Matrix4x4 local)
+        public JointInfo(Bone bone, JointInfo parent, Matrix4x4 local)
         {
             name = bone.Name;
             vertexWeights = bone.VertexWeights;
+            
+            parent?.children.Add(this);
+            this.parent = parent;
+            
             this.local = local;
-            model = Matrix4x4.Identity;
-            //offset = bone.OffsetMatrix; // TODO 动画系统/加载进来的offsetMatrix好像不对
+            offset = LocalToWorld();
+            offset.Inverse();
+        }
+        
+        public Matrix4x4 LocalToWorld()
+        {
+            if (this.parent == null)
+            {
+                return this.local;
+            }
+            return this.local * this.parent.LocalToWorld();
         }
     }
 }

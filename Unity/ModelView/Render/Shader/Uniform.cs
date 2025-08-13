@@ -46,6 +46,13 @@ public partial struct Shading_LightUniform
     public Vector3 dir;
     public float intensity;
     public Vector4 color;
+    public Vector4 worldPos;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct Shading_CameraUniform
+{
+    public Vector4 worldPos;
 }
 
 

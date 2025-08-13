@@ -21,7 +21,7 @@ public class Init
         
         ETTask.ExceptionHandler += Log.Instance.Error;
         
-        // 这2个不能放在Entry里, Entry是异步的, 如果Update时还没被挂载怎么办?
+        // 这几个不能放在Entry里, Entry是异步的, 如果Update时还没被挂载怎么办?
         World.Instance.AddSingleton<Time>();
         World.Instance.AddSingleton<FiberManager>();
 

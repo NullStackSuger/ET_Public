@@ -37,4 +37,9 @@ public static class MathHelper
 
         return new Vector3(x, y, z) * Rad2Deg;
     }
+
+    public static Vector4 ToVector4(this Vector3 v)
+    {
+        return new Vector4(v.X, v.Y, v.Z, 0);
+    }
 }

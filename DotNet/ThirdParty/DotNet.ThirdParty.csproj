@@ -34,6 +34,7 @@
         <PackageReference Include="CommandLineParser" Version="2.9.1" />
         <PackageReference Include="MongoDB.Driver" Version="3.4.0" />
         <PackageReference Include="NLog" Version="6.0.1" />
+        <PackageReference Include="OpenAI" Version="2.3.0" />
         <PackageReference Include="PhysX.Net" Version="5.0.1-alpha1" GeneratePathProperty="true" />
     </ItemGroup>
 

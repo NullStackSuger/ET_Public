@@ -22,6 +22,11 @@ public static class ShaderGenerator
             list.AddRange(Directory.GetFiles(target, "*.vert"));
             list.AddRange(Directory.GetFiles(target, "*.frag"));
         }
+
+        foreach (string name in list)
+        {
+            Console.WriteLine($"处理Shader: {name}");
+        }
         
         return list.ToArray();
     }

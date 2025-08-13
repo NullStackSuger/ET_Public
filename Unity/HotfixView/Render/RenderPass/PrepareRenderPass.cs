@@ -60,10 +60,13 @@ public class PrepareRenderPass : ARenderPassHandler
             
             AABB aabb = meshComponent.AABB().Transform(transformComponent.Model());
 
-            if (frustum.Intersects(aabb))
+            
+            objs.Add(child);
+            
+            /*if (frustum.Intersects(aabb))
             {
                 objs.Add(child);
-            }
+            }*/
         }
         
         // 4.进行深度排序

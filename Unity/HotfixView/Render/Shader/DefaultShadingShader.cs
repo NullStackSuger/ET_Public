@@ -30,6 +30,7 @@ public class DefaultShadingShader : AShaderHandler
         if (camera == null) return null;
         TransformComponent transform = meshComponent.GetParent<ViewObject>().GetComponent<TransformComponent>();
         TransformComponent lightTransform = light.GetParent<ViewObject>().GetComponent<TransformComponent>();
+        TransformComponent cameraTransform = camera.GetParent<ViewObject>().GetComponent<TransformComponent>();
         
         (DeviceBuffer mBuffer, ResourceLayoutElementDescription mElement) = renderComponent.device.CreateUniform("M", new Shading_MUniform() { model = transform.Model() });
         info.uniformBuffers["M"] = mBuffer;
@@ -41,10 +42,15 @@ public class DefaultShadingShader : AShaderHandler
         info.binds.Add(vpBuffer);
         info.elements.Add(vpElement);
         
-        (DeviceBuffer lightBuffer, ResourceLayoutElementDescription lightElement) = renderComponent.device.CreateUniform("Light", new Shading_LightUniform() { view = light.View(), projection = light.Projection(), dir = lightTransform.Forward(), color = light.color, intensity = light.intensity });
+        (DeviceBuffer lightBuffer, ResourceLayoutElementDescription lightElement) = renderComponent.device.CreateUniform("Light", new Shading_LightUniform() { view = light.View(), projection = light.Projection(), dir = lightTransform.Forward(), color = light.color, intensity = light.intensity, worldPos = lightTransform.GetWorldPosition().ToVector4() });
         info.uniformBuffers["Light"] = lightBuffer;
         info.binds.Add(lightBuffer);
         info.elements.Add(lightElement);
+        
+        (DeviceBuffer cameraBuffer, ResourceLayoutElementDescription cameraElement) = renderComponent.device.CreateUniform("Camera", new Shading_CameraUniform() { worldPos = cameraTransform.GetWorldPosition().ToVector4() });
+        info.uniformBuffers["Camera"] = cameraBuffer;
+        info.binds.Add(cameraBuffer);
+        info.elements.Add(cameraElement);
 
         Texture shadowMap = renderComponent.Get<Texture>("ShadowMap");
         (Sampler shadowMapSampler, ResourceLayoutElementDescription textureElement, ResourceLayoutElementDescription samplerElement) = renderComponent.device.CreateTexture("shadowMap", shadowMap);
@@ -99,7 +105,7 @@ public class DefaultShadingShader : AShaderHandler
         if (meshComponent.Parent.GetComponent(out AnimatorComponent animatorComponent))
         {
             var vs = renderComponent.Get<ShadingVertex[]>("Vertices");
-            for (int i = 0; i < animatorComponent.positions.Length; i++)
+            for (int i = 0; i < animatorComponent.positions.Count; i++)
             {
                 vs[i].position = animatorComponent.positions[i];
             }
@@ -113,9 +119,11 @@ public class DefaultShadingShader : AShaderHandler
         if (camera == null) return;
         TransformComponent transform = meshComponent.GetParent<ViewObject>().GetComponent<TransformComponent>();
         TransformComponent lightTransform = light.GetParent<ViewObject>().GetComponent<TransformComponent>();
+        TransformComponent cameraTransform = camera.GetParent<ViewObject>().GetComponent<TransformComponent>();
         
         renderComponent.device.UpdateUniform(info.uniformBuffers["M"], new Shading_MUniform() { model = transform.Model() });
         renderComponent.device.UpdateUniform(info.uniformBuffers["VP"], new Shading_VPUniform() { view = camera.View(), projection = camera.Projection() });
-        renderComponent.device.UpdateUniform(info.uniformBuffers["Light"], new Shading_LightUniform() { view = light.View(), projection = light.Projection(), dir = lightTransform.Forward(), color = light.color, intensity = light.intensity });
+        renderComponent.device.UpdateUniform(info.uniformBuffers["Light"], new Shading_LightUniform() { view = light.View(), projection = light.Projection(), dir = lightTransform.Forward(), color = light.color, intensity = light.intensity, worldPos = lightTransform.GetWorldPosition().ToVector4() });
+        renderComponent.device.UpdateUniform(info.uniformBuffers["Camera"], new Shading_CameraUniform() { worldPos = cameraTransform.GetWorldPosition().ToVector4() });
     }
 }

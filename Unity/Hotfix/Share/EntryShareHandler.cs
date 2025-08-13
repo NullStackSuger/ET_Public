@@ -8,6 +8,7 @@ public class EntryShareHandler : AEvent<Scene, EntryShare>
         root.AddComponent<TimerComponent>();
         root.AddComponent<CoroutineLockComponent>();
         root.AddComponent<ObjectWait>();
+        root.AddComponent<OpenAiComponent>();
         
         await ETTask.CompletedTask;
     }
