@@ -18,24 +18,6 @@ public static partial class MeshComponentSystem
         self.AddToDirtyMesh();
     }
 
-    public static AABB AABB(this MeshComponent self)
-    {
-        if (self.meshInfo.indices == null || self.meshInfo.indices.Length == 0 || self.meshInfo.positions == null || self.meshInfo.positions.Length == 0)
-        {
-            return ET.Client.AABB.None;
-        }
-
-        AABB aabb = ET.Client.AABB.None;
-        
-        foreach (ushort i in self.meshInfo.indices)
-        {
-            Vector3 p = self.meshInfo.positions[i];
-            aabb.Encapsulate(p);
-        }
-        
-        return aabb;
-    }
-
     public static void AddToDirtyMesh(this MeshComponent self)
     {
         self.Scene().GetComponent<RenderComponent>().GetComponent<DirtyMeshComponent>().dirtyMeshes.Enqueue(self.GetParent<ViewObject>());

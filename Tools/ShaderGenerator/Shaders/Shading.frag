@@ -26,44 +26,49 @@ layout (set = 0, binding = 3) uniform Camera
 layout(set = 0, binding = 4) uniform texture2D shadowMap;
 layout(set = 0, binding = 5) uniform sampler shadowMapSampler;
 
-float Fresnel_Schlick(float cosTheta, float F0)
+vec3 Fresnel_Schlick(float cosTheta, vec3 F0)
 {
     return F0 + (1.0 - F0) * pow(1.0 - cosTheta, 5.0);
 }
 
-float D_GGX(float cosThetaH, float alpha) 
+float D_GGX(vec3 N, vec3 H, float roughness) 
 {
-    float alpha2 = alpha * alpha;
-    float cosThetaH2 = cosThetaH * cosThetaH;
-    return alpha2 / (3.14159f * pow(cosThetaH2 * (alpha2 - 1.0) + 1.0, 2.0));
+    float NdotH = max(dot(N, H), 0.0);
+    float NdotH2 = NdotH * NdotH;
+    float a = roughness * roughness;
+    float a2 = a * a;
+
+    float nom = a2;
+    float denom = (NdotH2 * (a2 - 1.0) + 1.0);
+    denom = 3.14159f * denom * denom;
+
+    return nom / denom;
 }
 
-float G_SchlickGGX(float cosThetaV, float alpha) 
+float G_SchlickGGX(float NdotV, float roughness) 
 {
-    float r = (alpha + 1.0) * cosThetaV;
-    float k = alpha * alpha / 2.0;
-    return cosThetaV / (cosThetaV * (1.0 - k) + k);
+    float r = roughness + 1.0;
+    float k = (r*r) / 8.0;
+
+    return NdotV / (NdotV * (1.0 - k) + k);
 }
 
 vec3 PBR_GGX(vec3 albedo, float metallic, float roughness, vec3 normal /*法线*/, vec3 viewDir/*物体指向相机*/, vec3 lightDir/*物体指向光源*/, vec3 Li/*光源颜色*强度*/)
 {
-    float F0 = 0.04;
-    F0 = mix(F0, metallic, metallic);
+    vec3 F0 = vec3(0.04);
+    F0 = mix(F0, albedo, metallic);
     vec3 halfDir = normalize(lightDir + viewDir);
-    
-    vec3 h = normalize(lightDir + viewDir);
-    float cosThetaH = dot(normal, halfDir);
-    
-    float F = Fresnel_Schlick(max(cosThetaH, 0.0), F0);
 
-    float D = D_GGX(cosThetaH, roughness);
+    vec3 F = Fresnel_Schlick(max(dot(halfDir, viewDir), 0.0), F0);
+
+    float D = D_GGX(normal, halfDir, roughness);
 
     float G = G_SchlickGGX(max(dot(normal, viewDir), 0.0), roughness) * G_SchlickGGX(max(dot(normal, lightDir), 0.0), roughness);
 
-    vec3 specular = vec3(D * F * G / (4.0 * max(dot(normal, viewDir), 0.0) * max(dot(normal, lightDir), 0.0)));
+    vec3 specular = vec3(D * F * G / (4.0 * max(dot(normal, viewDir), 0.001) * max(dot(normal, lightDir), 0.001)));
     vec3 diffuse = (1.0 - F) * (1.0 - metallic) * albedo / 3.14159f;
 
-    return diffuse + specular;
+    return (diffuse + specular) * Li * max(dot(normal, lightDir), 0);
 }
 
 void main() 
@@ -83,7 +88,7 @@ void main()
     float shadow = currentDepth - bias >= shadowDepth ? 0.3 : 1.0;*/
 
     // PCF
-    /**float shadow = 0.0;
+    /*float shadow = 0.0;
     int radius = 4;
     float bias = 0.01;
     vec2 texel_size = 1.0 / vec2(textureSize(sampler2D(shadowMap, shadowMapSampler), 0)); // 每个像素的大小
@@ -129,19 +134,19 @@ void main()
     {
         vec2 offset = vec2(cos(float(i) * 2.0 * 3.1415926 / float(sampleCount)), sin(float(i) * 2.0 * 3.1415926 / float(sampleCount))) * blockerRadius;
         float pcssDepth = texture(sampler2D(shadowMap, shadowMapSampler), vec2(shadowCoord.xy + offset)).r;
-        shadowSumDepth += /*currentDepth > pcssDepth ? 0.0 : 1.0;*/(currentDepth - bias) > pcssDepth ? 0.0 : 1.0;
+        shadowSumDepth += (currentDepth - bias) > pcssDepth ? 0.0 : 1.0;
     }
     float shadow = shadowSumDepth / sampleCount;
     
     // 漫反射光照
     vec3 normal = normalize(fragWorldNormal);
     float ndl = max(dot(normal, -light.dir), 0.0);
-    vec3 baseColor = /*texture(img, fragUV).xyz;*/ vec3(1.0);
+    vec3 baseColor = vec3(1.0);
     vec3 diffuse = baseColor * light.color.rgb * ndl * light.intensity;
     
     vec3 v = normalize(camera.worldPos.xyz - fragWorldPos);
     vec3 l = normalize(light.worldPos.xyz - fragWorldPos);
-    vec3 pbr = PBR_GGX(vec3(1), 0.01, 0.98, normal, v, l, vec3(1) * 0.8);
+    vec3 pbr = PBR_GGX(vec3(1), 0.5, 0.2, normal, v, l, light.color.xyz * light.intensity);
     
     outColor = vec4(pbr * shadow, 1.0);
 }

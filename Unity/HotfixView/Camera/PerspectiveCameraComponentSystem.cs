@@ -26,8 +26,8 @@ public static partial class PerspectiveCameraComponentSystem
             return Matrix4x4.Identity;
         }
         
-        Vector3 zAxis = Vector3.Normalize(transform.Forward());
-        Vector3 xAxis = Vector3.Normalize(Vector3.Cross(transform.Up(), zAxis));
+        Vector3 zAxis = Vector3.Normalize(transform.Forward);
+        Vector3 xAxis = Vector3.Normalize(Vector3.Cross(transform.Up, zAxis));
         Vector3 yAxis = Vector3.Cross(zAxis, xAxis);
         
         return new Matrix4x4
@@ -35,7 +35,7 @@ public static partial class PerspectiveCameraComponentSystem
             xAxis.X, yAxis.X, zAxis.X, 0,
             xAxis.Y, yAxis.Y, zAxis.Y, 0,
             xAxis.Z, yAxis.Z, zAxis.Z, 0,
-            -Vector3.Dot(xAxis, transform.position), -Vector3.Dot(yAxis, transform.position), -Vector3.Dot(zAxis, transform.position), 1
+            -Vector3.Dot(xAxis, transform.localPosition), -Vector3.Dot(yAxis, transform.localPosition), -Vector3.Dot(zAxis, transform.localPosition), 1
         );
     }
     

@@ -58,7 +58,7 @@ public class PrepareRenderPass : ARenderPassHandler
             if (!child.GetComponent(out MeshComponent meshComponent)) continue;
             if (!child.GetComponent(out TransformComponent transformComponent)) continue;
             
-            AABB aabb = meshComponent.AABB().Transform(transformComponent.Model());
+            AABB aabb = AABB.GetAABB(meshComponent).Transform(transformComponent.Model);
 
             
             objs.Add(child);
@@ -70,11 +70,11 @@ public class PrepareRenderPass : ARenderPassHandler
         }
         
         // 4.进行深度排序
-        Vector3 cameraWorldPosition = camera.ViewObject().GetComponent<TransformComponent>().GetWorldPosition();
+        Vector3 cameraWorldPosition = camera.ViewObject().GetComponent<TransformComponent>().worldPosition;
         objs.Sort((a, b) =>
         {
-            float da = Vector3.DistanceSquared(cameraWorldPosition, a.GetComponent<TransformComponent>().GetWorldPosition());
-            float db = Vector3.DistanceSquared(cameraWorldPosition, b.GetComponent<TransformComponent>().GetWorldPosition());
+            float da = Vector3.DistanceSquared(cameraWorldPosition, a.GetComponent<TransformComponent>().worldPosition);
+            float db = Vector3.DistanceSquared(cameraWorldPosition, b.GetComponent<TransformComponent>().worldPosition);
             return da.CompareTo(db); // 近 -> 远
         });
 

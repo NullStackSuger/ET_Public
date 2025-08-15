@@ -42,6 +42,17 @@ public class DoubleMap<K, V>
 		vk.Add(value, key);
 	}
 
+	public void Set(K key, V value)
+	{
+		if (key == null || value == null)
+		{
+			return;
+		}
+
+		kv[key] = value;
+		vk[value] = key;
+	}
+
 	public V GetValueByKey(K key)
 	{
 		if (key != null && kv.ContainsKey(key))

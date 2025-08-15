@@ -24,7 +24,7 @@ public static partial class PhysicsRigidActorComponentSystem
         shape.LocalPosePosition = offset;
         rigid.SetMassAndUpdateInertia(mass);
         TransformComponent transform = self.Parent.GetComponent<TransformComponent>();
-        rigid.GlobalPose = new Transform(transform.rotation, transform.position).ToMatrix();
+        rigid.GlobalPose = new Transform(transform.localRotation, transform.localPosition).ToMatrix();
         rigid.UserData = self;
         physicsScene.physicsScene.AddActor(rigid);
         self.rigid = rigid;
@@ -38,7 +38,7 @@ public static partial class PhysicsRigidActorComponentSystem
         var shape = RigidActorExt.CreateExclusiveShape(rigid, new SphereGeometry(radius), material);
         shape.LocalPosePosition = offset;
         TransformComponent transform = self.Parent.GetComponent<TransformComponent>();
-        rigid.GlobalPose = new Transform(transform.rotation, transform.position).ToMatrix();
+        rigid.GlobalPose = new Transform(transform.localRotation, transform.localPosition).ToMatrix();
         rigid.UserData = self;
         physicsScene.physicsScene.AddActor(rigid);
         self.rigid = rigid;
@@ -53,7 +53,7 @@ public static partial class PhysicsRigidActorComponentSystem
         shape.LocalPosePosition = offset;
         rigid.SetMassAndUpdateInertia(mass);
         TransformComponent transform = self.Parent.GetComponent<TransformComponent>();
-        rigid.GlobalPose = new Transform(transform.rotation, transform.position).ToMatrix();
+        rigid.GlobalPose = new Transform(transform.localRotation, transform.localPosition).ToMatrix();
         rigid.UserData = self;
         physicsScene.physicsScene.AddActor(rigid);
         self.rigid = rigid;
@@ -66,7 +66,7 @@ public static partial class PhysicsRigidActorComponentSystem
         var shape = RigidActorExt.CreateExclusiveShape(rigid, new BoxGeometry(halfExtend), material);
         shape.LocalPosePosition = offset;
         TransformComponent transform = self.Parent.GetComponent<TransformComponent>();
-        rigid.GlobalPose = new Transform(transform.rotation, transform.position).ToMatrix();
+        rigid.GlobalPose = new Transform(transform.localRotation, transform.localPosition).ToMatrix();
         rigid.UserData = self;
         physicsScene.physicsScene.AddActor(rigid);
         self.rigid = rigid;
@@ -81,7 +81,7 @@ public static partial class PhysicsRigidActorComponentSystem
         shape.LocalPosePosition = offset;
         rigid.SetMassAndUpdateInertia(mass);
         TransformComponent transform = self.Parent.GetComponent<TransformComponent>();
-        rigid.GlobalPose = new Transform(transform.rotation, transform.position).ToMatrix();
+        rigid.GlobalPose = new Transform(transform.localRotation, transform.localPosition).ToMatrix();
         rigid.UserData = self;
         physicsScene.physicsScene.AddActor(rigid);
         self.rigid = rigid;
@@ -96,7 +96,7 @@ public static partial class PhysicsRigidActorComponentSystem
         var shape = RigidActorExt.CreateExclusiveShape(rigid, new CapsuleGeometry(radius, halfHeight), material);
         shape.LocalPosePosition = offset;
         TransformComponent transform = self.Parent.GetComponent<TransformComponent>();
-        rigid.GlobalPose = new Transform(transform.rotation, transform.position).ToMatrix();
+        rigid.GlobalPose = new Transform(transform.localRotation, transform.localPosition).ToMatrix();
         rigid.UserData = self;
         physicsScene.physicsScene.AddActor(rigid);
         self.rigid = rigid;
@@ -110,7 +110,7 @@ public static partial class PhysicsRigidActorComponentSystem
         var shape = RigidActorExt.CreateExclusiveShape(rigid, new PlaneGeometry(), material);
         shape.LocalPosePosition = offset;
         TransformComponent transform = self.Parent.GetComponent<TransformComponent>();
-        rigid.GlobalPose = new Transform(transform.rotation, transform.position).ToMatrix();
+        rigid.GlobalPose = new Transform(transform.localRotation, transform.localPosition).ToMatrix();
         rigid.UserData = self;
         physicsScene.physicsScene.AddActor(rigid);
         self.rigid = rigid;
@@ -128,7 +128,7 @@ public static partial class PhysicsRigidActorComponentSystem
         shape.Flags |= ShapeFlag.TriggerShape;
         shape.LocalPosePosition = offset;
         TransformComponent transform = self.Parent.GetComponent<TransformComponent>();
-        rigid.GlobalPose = new Transform(transform.rotation, transform.position).ToMatrix();
+        rigid.GlobalPose = new Transform(transform.localRotation, transform.localPosition).ToMatrix();
         rigid.UserData = self;
         physicsScene.physicsScene.AddActor(rigid);
         self.rigid = rigid;
@@ -145,7 +145,7 @@ public static partial class PhysicsRigidActorComponentSystem
         shape.Flags |= ShapeFlag.TriggerShape;
         shape.LocalPosePosition = offset;
         TransformComponent transform = self.Parent.GetComponent<TransformComponent>();
-        rigid.GlobalPose = new Transform(transform.rotation, transform.position).ToMatrix();
+        rigid.GlobalPose = new Transform(transform.localRotation, transform.localPosition).ToMatrix();
         rigid.UserData = self;
         physicsScene.physicsScene.AddActor(rigid);
         self.rigid = rigid;
@@ -162,7 +162,7 @@ public static partial class PhysicsRigidActorComponentSystem
         shape.Flags |= ShapeFlag.TriggerShape;
         shape.LocalPosePosition = offset;
         TransformComponent transform = self.Parent.GetComponent<TransformComponent>();
-        rigid.GlobalPose = new Transform(transform.rotation, transform.position).ToMatrix();
+        rigid.GlobalPose = new Transform(transform.localRotation, transform.localPosition).ToMatrix();
         rigid.UserData = self;
         physicsScene.physicsScene.AddActor(rigid);
         self.rigid = rigid;

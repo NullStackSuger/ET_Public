@@ -15,8 +15,8 @@ public static partial class PhysicsCharacterComponentSystem
         TransformComponent transform = self.Parent.GetComponent<TransformComponent>();
         self.controller = scene.controllerManager.CreateController<CapsuleController>(new CapsuleControllerDesc()
         {
-            Position = transform.position,
-            UpDirection = Vector3.Transform(Vector3.UnitY, transform.rotation),
+            Position = transform.localPosition,
+            UpDirection = Vector3.Transform(Vector3.UnitY, transform.localRotation),
             Radius = radius,
             Height = halfHeight * 2,
             Material = material,
@@ -30,8 +30,8 @@ public static partial class PhysicsCharacterComponentSystem
         TransformComponent transform = self.Parent.GetComponent<TransformComponent>();
         self.controller = scene.controllerManager.CreateController<BoxController>(new BoxControllerDesc()
         {
-            Position = transform.position,
-            UpDirection = Vector3.Transform(Vector3.UnitY, transform.rotation),
+            Position = transform.localPosition,
+            UpDirection = Vector3.Transform(Vector3.UnitY, transform.localRotation),
             HalfSideExtent = halfSize.X,
             HalfHeight = halfSize.Y,
             HalfForwardExtent = halfSize.Z,

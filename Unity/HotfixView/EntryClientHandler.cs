@@ -42,8 +42,8 @@ public class EntryClientHandler : AEvent<Scene, EntryClient>
 
         ViewObject cube = MeshComponentSystem.Load("Objs/cube.obj", objs);
         TransformComponent transformComponent = cube.GetComponent<TransformComponent>();
-        transformComponent.position = new Vector3(0, 0, 5);
-        transformComponent.rotation = new Vector3(45, 0, 45).ToQuaternion();
+        transformComponent.localPosition = new Vector3(0, 0, 5);
+        transformComponent.localRotation = new Vector3(45, 0, 45).ToQuaternion();
         PhysX.Material mat = PhysicsComponent.Instance.physics.CreateMaterial(0.5f, 0.5f, 0.6f);
         cube.AddComponent<PhysicsRigidActorComponent, Vector3, float, PhysX.Material, float>(Vector3.Zero, 1f, mat, 1f);
         

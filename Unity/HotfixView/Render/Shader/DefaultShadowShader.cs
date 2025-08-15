@@ -27,7 +27,7 @@ public class DefaultShadowShader : AShaderHandler
         if (light == null) return null;
         TransformComponent transform = meshComponent.GetParent<ViewObject>().GetComponent<TransformComponent>();
         
-        (DeviceBuffer mBuffer, ResourceLayoutElementDescription mElement) = renderComponent.device.CreateUniform("M", new Shadow_MUniform() { model = transform.Model() });
+        (DeviceBuffer mBuffer, ResourceLayoutElementDescription mElement) = renderComponent.device.CreateUniform("M", new Shadow_MUniform() { model = transform.Model });
         info.uniformBuffers["M"] = mBuffer;
         info.binds.Add(mBuffer);
         info.elements.Add(mElement);
@@ -82,7 +82,7 @@ public class DefaultShadowShader : AShaderHandler
         if (light == null) return;
         TransformComponent transform = meshComponent.GetParent<ViewObject>().GetComponent<TransformComponent>();
         
-        renderComponent.device.UpdateUniform(info.uniformBuffers["M"], new Shadow_MUniform() { model = transform.Model() });
+        renderComponent.device.UpdateUniform(info.uniformBuffers["M"], new Shadow_MUniform() { model = transform.Model });
         renderComponent.device.UpdateUniform(info.uniformBuffers["VP"], new Shadow_VPUniform() { view = light.View(), projection = light.Projection() });
     }
 }

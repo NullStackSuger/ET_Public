@@ -24,42 +24,42 @@ public static partial class EditorComponentSystem
         
         if (input.Get(Key.W) == InputState.LongTimeDown)
         {
-            transform.position += Vector3.Transform(Vector3.UnitZ, transform.rotation) * 0.2f;
+            transform.localPosition += Vector3.Transform(Vector3.UnitZ, transform.localRotation) * 0.2f;
         }
 
         if (input.Get(Key.S) == InputState.LongTimeDown)
         {
-            transform.position -= Vector3.Transform(Vector3.UnitZ, transform.rotation) * 0.2f;
+            transform.localPosition -= Vector3.Transform(Vector3.UnitZ, transform.localRotation) * 0.2f;
         }
         
         if (input.Get(Key.A) == InputState.LongTimeDown)
         {
-            transform.position -= Vector3.Transform(Vector3.UnitX, transform.rotation) * 0.2f;
+            transform.localPosition -= Vector3.Transform(Vector3.UnitX, transform.localRotation) * 0.2f;
         }
         
         if (input.Get(Key.D) == InputState.LongTimeDown)
         {
-            transform.position += Vector3.Transform(Vector3.UnitX, transform.rotation) * 0.2f;
+            transform.localPosition += Vector3.Transform(Vector3.UnitX, transform.localRotation) * 0.2f;
         }
         
         if (input.Get(Key.ShiftLeft) == InputState.LongTimeDown)
         {
-            transform.position -= Vector3.Transform(Vector3.UnitY, transform.rotation) * 0.2f;
+            transform.localPosition -= Vector3.Transform(Vector3.UnitY, transform.localRotation) * 0.2f;
         }
         
         if (input.Get(Key.Space) == InputState.LongTimeDown)
         {
-            transform.position += Vector3.Transform(Vector3.UnitY, transform.rotation) * 0.2f;
+            transform.localPosition += Vector3.Transform(Vector3.UnitY, transform.localRotation) * 0.2f;
         }
 
         if (input.Get(Key.E) == InputState.LongTimeDown)
         {
-            transform.rotation *= (Vector3.UnitY * 1f).ToQuaternion();
+            transform.localRotation *= (Vector3.UnitY * 1f).ToQuaternion();
         }
         
         if (input.Get(Key.Q) == InputState.LongTimeDown)
         {
-            transform.rotation *= (-Vector3.UnitY * 1f).ToQuaternion();
+            transform.localRotation *= (-Vector3.UnitY * 1f).ToQuaternion();
         }
     }
 }

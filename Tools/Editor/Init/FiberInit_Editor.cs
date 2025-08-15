@@ -47,21 +47,21 @@ public class FiberInit_Editor : AInvokeHandler<FiberInit, ETTask>
         ViewObject light = objs.AddChild<ViewObject, string>("light");
         light.AddComponent<TransformComponent, Vector3, Quaternion, Vector3>(new Vector3(0, 10, 10), new Vector3(90, 0, 0).ToQuaternion(), Vector3.One);
         var lightCamera = light.AddComponent<OrthographicCameraComponent, float, float, float, float>(window.Aspect(), 10, 0.1f, 100f);
-        DirectionLightComponent.Main = light.AddComponent<DirectionLightComponent, float, Color, OrthographicCameraComponent>(0.8f, Color.White, lightCamera);
+        DirectionLightComponent.Main = light.AddComponent<DirectionLightComponent, float, Color, OrthographicCameraComponent>(10f, Color.White, lightCamera);
         
         ViewObject cube = MeshComponentSystem.Load("Objs/cube.obj"/*"Objs/model.dae"*/, objs);
         TransformComponent transformComponent = cube.GetComponent<TransformComponent>();
-        transformComponent.position = new Vector3(0, 8, 10);
-        transformComponent.rotation = new Vector3(45, 0, 45).ToQuaternion();
+        transformComponent.localPosition = new Vector3(0, 8, 10);
+        transformComponent.localRotation = new Vector3(45, 0, 45).ToQuaternion();
         /*Material mat = PhysicsComponent.Instance.physics.CreateMaterial(0.1f, 0.1f, 0.1f);
         cube.AddComponent<PhysicsRigidActorComponent, Vector3, float, Material, float>(Vector3.Zero, 1f, mat, 1f).callback = typeof(DefaultCollisionHandler);*/
 
         ViewObject plane = MeshComponentSystem.Load("Objs/cube.obj", objs);
         plane.name = "Plane";
         transformComponent = plane.GetComponent<TransformComponent>();
-        transformComponent.position = new Vector3(0, 0, 10);
-        transformComponent.rotation = new Vector3(0, 0, 0).ToQuaternion();
-        transformComponent.scale = new Vector3(10, 0.1f, 10);
+        transformComponent.localPosition = new Vector3(0, 0, 10);
+        transformComponent.localRotation = new Vector3(0, 0, 0).ToQuaternion();
+        transformComponent.localScale = new Vector3(10, 0.1f, 10);
         /*ViewObject plane = objs.AddChild<ViewObject, string>("plane");
         plane.AddComponent<TransformComponent, Vector3, Quaternion, Vector3>(new Vector3(0, -3, 10), new Vector3(-20, 0, 0).ToQuaternion(), new Vector3(3, 0.5f, 3));
         plane.AddComponent<MeshComponent, string>("Objs/cube.obj");*/

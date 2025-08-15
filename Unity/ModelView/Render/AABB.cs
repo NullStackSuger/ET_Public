@@ -10,13 +10,18 @@ public struct AABB
         Max = max;
     }
 
+    public AABB()
+    {
+        Min = float.MaxValue * Vector3.One;
+        Max = float.MinValue * Vector3.One;
+    }
+
     public Vector3 Min;
     public Vector3 Max;
     
     public Vector3 Center => (Min + Max) * 0.5f;
     public Vector3 Size => Max - Min;
-    
-    public static AABB None => new AABB(new Vector3(float.PositiveInfinity), new Vector3(float.NegativeInfinity));
+    public float SurfaceArea => (Size.X * Size.Y + Size.X * Size.Z + Size.Y * Size.Z) * 2.0f;
 
     public IEnumerable<Vector3> GetCorners()
     { 
@@ -32,7 +37,7 @@ public struct AABB
 
     public AABB Transform(Matrix4x4 model)
     {
-        AABB aabb = AABB.None;
+        AABB aabb = new AABB();
         foreach (Vector3 corner in GetCorners())
         {
             Vector3 transformed = Vector3.Transform(corner, model);
@@ -53,6 +58,28 @@ public struct AABB
     {
         Min = Vector3.Min(Min, other.Min);
         Max = Vector3.Max(Max, other.Max);
+    }
+    public static AABB Encapsulate(AABB a, AABB b)
+    {
+        return new AABB(Vector3.Min(a.Min, b.Min), Vector3.Max(a.Max, b.Max));
+    }
+    
+    public static AABB GetAABB(MeshComponent self)
+    {
+        if (self.meshInfo.indices == null || self.meshInfo.indices.Length == 0 || self.meshInfo.positions == null || self.meshInfo.positions.Length == 0)
+        {
+            return new AABB();
+        }
+
+        AABB aabb =  new AABB();
+        
+        foreach (ushort i in self.meshInfo.indices)
+        {
+            Vector3 p = self.meshInfo.positions[i];
+            aabb.Encapsulate(p);
+        }
+        
+        return aabb;
     }
     
     // 判断是否与另一个 AABB 相交
