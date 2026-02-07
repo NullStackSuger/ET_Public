@@ -32,4 +32,9 @@ public class EditorWindowRenderPass : ARenderPassHandler
         
         editorWindows.uiController.Render(renderComponent.device, renderComponent.commandList);
     }
+
+    public override void LateUpdate(RenderComponent renderComponent)
+    {
+        
+    }
 }

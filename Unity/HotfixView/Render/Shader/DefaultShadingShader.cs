@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using Veldrid;
+using Veldrid.ImageSharp;
 using Veldrid.SPIRV;
 
 namespace ET.Client;
@@ -21,7 +22,11 @@ public class DefaultShadingShader : AShaderHandler
         renderComponent.device.UpdateBuffer(info.indexBuffer, 0, meshComponent.meshInfo.indices);
         info.vertexBuffer = renderComponent.device.ResourceFactory.CreateBuffer(new BufferDescription((uint)(vs.Length * Marshal.SizeOf<ShadingVertex>()), BufferUsage.VertexBuffer));
         renderComponent.device.UpdateBuffer(info.vertexBuffer, 0, vs);
-        renderComponent.Set("Vertices", vs);
+
+        if (meshComponent.Parent.GetComponent(out AnimatorComponent animatorComponent))
+        {
+            animatorComponent.vertices = vs;
+        }
         
         // Update Uniform Buffer
         DirectionLightComponent light = DirectionLightComponent.Main;
@@ -47,19 +52,35 @@ public class DefaultShadingShader : AShaderHandler
         info.binds.Add(lightBuffer);
         info.elements.Add(lightElement);
         
-        (DeviceBuffer cameraBuffer, ResourceLayoutElementDescription cameraElement) = renderComponent.device.CreateUniform("Camera", new Shading_CameraUniform() { worldPos = cameraTransform.worldPosition.ToVector4() });
+        (DeviceBuffer cameraBuffer, ResourceLayoutElementDescription cameraElement) = renderComponent.device.CreateUniform("Camera", new Shading_CameraUniform() { view = camera.View(), projection = camera.Projection(), worldPos = cameraTransform.worldPosition.ToVector4() });
         info.uniformBuffers["Camera"] = cameraBuffer;
         info.binds.Add(cameraBuffer);
         info.elements.Add(cameraElement);
 
         Texture shadowMap = renderComponent.Get<Texture>("ShadowMap");
-        (Sampler shadowMapSampler, ResourceLayoutElementDescription textureElement, ResourceLayoutElementDescription samplerElement) = renderComponent.device.CreateTexture("shadowMap", shadowMap);
+        (Sampler shadowMapSampler, ResourceLayoutElementDescription shadowMapElement, ResourceLayoutElementDescription shadowMapSamplerElement) = renderComponent.device.CreateTexture("shadowMap", shadowMap);
         info.textures["shadowMap"] = shadowMap;
         info.samplers["shadowMap"] = shadowMapSampler;
-        info.elements.Add(textureElement);
-        info.elements.Add(samplerElement);
+        info.elements.Add(shadowMapElement);
+        info.elements.Add(shadowMapSamplerElement);
         info.binds.Add(shadowMap);
         info.binds.Add(shadowMapSampler);
+
+        Texture environmentMap = new ImageSharpCubemapTexture(
+            "Shaders/posx.jpg", 
+            "Shaders/negx.jpg", 
+            "Shaders/posy.jpg", 
+            "Shaders/negy.jpg", 
+            "Shaders/posz.jpg", 
+            "Shaders/negz.jpg")
+            .CreateDeviceTexture(renderComponent.device, renderComponent.device.ResourceFactory);
+        (Sampler environmentMapSampler, ResourceLayoutElementDescription environmentMapElement, ResourceLayoutElementDescription environmentMapSamplerElement) = renderComponent.device.CreateTexture("environmentMap", environmentMap);
+        info.textures["environmentMap"] = environmentMap;
+        info.samplers["environmentMap"] = environmentMapSampler;
+        info.elements.Add(environmentMapElement);
+        info.elements.Add(environmentMapSamplerElement);
+        info.binds.Add(environmentMap);
+        info.binds.Add(environmentMapSampler);
         
         var resourceLayout = renderComponent.device.CreateResourceLayout(info.elements.ToArray());
         info.resourceSet = renderComponent.device.CreateResourceSet(resourceLayout, info.binds.ToArray());
@@ -67,7 +88,11 @@ public class DefaultShadingShader : AShaderHandler
         // Update Pipeline
         info.pipeline = renderComponent.device.ResourceFactory.CreateGraphicsPipeline(new GraphicsPipelineDescription()
         {
-            BlendState = BlendStateDescription.SingleOverrideBlend,
+            // 这里注意, 有几个颜色附件就填几个
+            BlendState = new BlendStateDescription(RgbaFloat.Black,
+                new BlendAttachmentDescription(),
+                new BlendAttachmentDescription(),
+                new BlendAttachmentDescription()),
             DepthStencilState = new DepthStencilStateDescription()
             {
                 DepthTestEnabled = true,
@@ -104,12 +129,7 @@ public class DefaultShadingShader : AShaderHandler
         // Update Vertex
         if (meshComponent.Parent.GetComponent(out AnimatorComponent animatorComponent))
         {
-            var vs = renderComponent.Get<ShadingVertex[]>("Vertices");
-            for (int i = 0; i < animatorComponent.positions.Count; i++)
-            {
-                vs[i].position = animatorComponent.positions[i];
-            }
-            renderComponent.device.UpdateBuffer(info.vertexBuffer, 0, vs);
+            renderComponent.device.UpdateBuffer(info.vertexBuffer, 0, animatorComponent.vertices);
         }
         
         // Update M VP Uniform Buffer
@@ -124,6 +144,6 @@ public class DefaultShadingShader : AShaderHandler
         renderComponent.device.UpdateUniform(info.uniformBuffers["M"], new Shading_MUniform() { model = transform.Model });
         renderComponent.device.UpdateUniform(info.uniformBuffers["VP"], new Shading_VPUniform() { view = camera.View(), projection = camera.Projection() });
         renderComponent.device.UpdateUniform(info.uniformBuffers["Light"], new Shading_LightUniform() { view = light.View(), projection = light.Projection(), dir = lightTransform.Forward, color = light.color, intensity = light.intensity, worldPos = lightTransform.worldPosition.ToVector4() });
-        renderComponent.device.UpdateUniform(info.uniformBuffers["Camera"], new Shading_CameraUniform() { worldPos = cameraTransform.worldPosition.ToVector4() });
+        renderComponent.device.UpdateUniform(info.uniformBuffers["Camera"], new Shading_CameraUniform() { view = camera.View(), projection = camera.Projection(), worldPos = cameraTransform.worldPosition.ToVector4() });
     }
 }

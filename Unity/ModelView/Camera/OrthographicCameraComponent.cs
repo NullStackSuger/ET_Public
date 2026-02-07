@@ -1,6 +1,8 @@
+using System.Numerics;
+
 namespace ET.Client;
 
-public class OrthographicCameraComponent : Entity, IAwake<float, float, float, float>, ISerialize, IDeserialize
+public class OrthographicCameraComponent : Entity, IAwake<float, float, float, float>, IAwake<Vector4, float, float>, ISerialize, IDeserialize
 {
     public float left;
     public float right;

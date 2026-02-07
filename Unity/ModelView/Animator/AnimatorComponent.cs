@@ -1,4 +1,3 @@
-using System.Numerics;
 using Assimp;
 
 namespace ET.Client;
@@ -7,7 +6,7 @@ public class AnimatorComponent : Entity, IAwake<List<Animation>>, ISerialize, ID
 {
     public Dictionary<string, Animation> animations;
     
-    public List<Vector3> positions;
+    public ShadingVertex[] vertices;
     public string currentName = "";
     public float currentTime;
 }

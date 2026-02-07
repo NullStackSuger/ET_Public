@@ -27,20 +27,6 @@ public static partial class AudioComponentSystem
     [EntitySystem]
     private static void LateUpdate(this AudioComponent self)
     {
-        /*InputComponent inputComponent = self.Scene().GetComponent<InputComponent>();
-        if (inputComponent.Get(Key.A) == InputState.Down)
-        {
-            self.Pause();
-        }
-        if (inputComponent.Get(Key.D) == InputState.Down)
-        {
-            self.Play();
-        }
-        if (inputComponent.Get(Key.W) == InputState.Down)
-        {
-            self.Stop();
-        }*/
-        
         if (!(self.current == null || self.current.wasapiOut.PlaybackState == PlaybackState.Stopped)) return;
 
         if (!self.waitPlay.TryDequeue(out self.current)) return;

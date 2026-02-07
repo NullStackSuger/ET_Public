@@ -43,6 +43,19 @@ public static partial class DirectionLightComponentSystem
             return camera.Projection();
         }
     }
+
+    public static void SetProjection(this DirectionLightComponent self, float left, float right, float bottom, float top, float near, float far)
+    {
+        OrthographicCameraComponent camera = self.camera;
+        if (camera == null) return;
+        
+        camera.left = left;
+        camera.right = right;
+        camera.bottom = bottom;
+        camera.top = top;
+        camera.near = near;
+        camera.far = far;
+    }
     
     public static Frustum Frustum(this DirectionLightComponent self)
     {

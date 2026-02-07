@@ -1,4 +1,7 @@
+using System.Numerics;
 using Assimp;
+using Matrix4x4 = Assimp.Matrix4x4;
+using Quaternion = Assimp.Quaternion;
 
 namespace ET.Client;
 
@@ -15,9 +18,6 @@ public static partial class AnimatorComponentSystem
                 animation.Name = "Default Animation";
             self.animations.Add(animation.Name, animation);
         }
-        
-        MeshComponent meshComponent = self.Parent.GetComponent<MeshComponent>();
-        self.positions = [..meshComponent.meshInfo.positions];
     }
 
     [EntitySystem]
@@ -34,10 +34,10 @@ public static partial class AnimatorComponentSystem
     private static void LateUpdate(this AnimatorComponent self)
     {
         if (!self.animations.TryGetValue(self.currentName, out Animation animation)) return;
-        
+
         float maxTime = (float)(animation.DurationInTicks / animation.TicksPerSecond);
         self.currentTime = Math.Clamp(self.currentTime + 0.01f, 0, maxTime); // TODO 动画系统/动画增量应该用DeltaTime
-        
+
         self.Play(self.currentName, self.currentTime);
 
         if (self.currentTime >= maxTime) self.currentTime = 0;
@@ -46,21 +46,21 @@ public static partial class AnimatorComponentSystem
     public static void Play(this AnimatorComponent self, string animationName)
     {
         if (!self.animations.TryGetValue(animationName, out Animation animation)) return;
-        
+
         self.currentName = animationName;
         self.currentTime = 0;
     }
 
-    public static void Play(this AnimatorComponent self, string animationName, float time)
+    public static void Play(this AnimatorComponent self, string animationName, float time, params string[] masks)
     {
         if (!self.animations.TryGetValue(animationName, out Animation animation)) return;
-        
+
         MeshComponent meshComponent = self.Parent.GetComponent<MeshComponent>();
         JointComponent jointComponent = self.Parent.GetComponent<JointComponent>();
         var positions = meshComponent.meshInfo.positions;
         var jointMap = jointComponent.jointMap;
         var modelMap = new Dictionary<string, Matrix4x4>();
-        
+
         foreach (NodeAnimationChannel channel in animation.NodeAnimationChannels)
         {
             string name = channel.NodeName;
@@ -70,11 +70,17 @@ public static partial class AnimatorComponentSystem
             JointComponent.JointInfo joint = jointMap[name];
             joint.local = Matrix4x4.FromScaling(scale) * rotation.FromQuaternion() * Matrix4x4.FromTranslation(position);
         }
-        
-        for (int i = 0; i < self.positions.Count; i++)
+
+        foreach (var joint in jointMap.Values)
         {
-            self.positions[i] = System.Numerics.Vector3.Zero;
+            if (masks.Contains(joint.name)) continue;
+
+            foreach (VertexWeight vertexWeight in joint.vertexWeights)
+            {
+                self.vertices[vertexWeight.VertexID].position = Vector3.Zero;
+            }
         }
+
         foreach (var joint in jointMap.Values)
         {
             foreach (VertexWeight vertexWeight in joint.vertexWeights)
@@ -85,72 +91,98 @@ public static partial class AnimatorComponentSystem
                 {
                     modelMap.Add(joint.name, joint.LocalToWorld());
                 }
-                
-                self.positions[vertexWeight.VertexID] += vertexWeight.Weight * (joint.offset * modelMap[joint.name] * vertex.ToVector3()).ToVector3();
+
+                self.vertices[vertexWeight.VertexID].position += vertexWeight.Weight * (joint.offset * modelMap[joint.name] * vertex.ToVector3()).ToVector3();
             }
         }
-        
-        static System.Numerics.Vector3 Lerp(float time, List<VectorKey> keys)
+    }
+
+    public static void Lerp(this AnimatorComponent self, string animationNameA, float timeA, string[] masksA, string animationNameB, float timeB, string[] masksB, float rate)
+    {
+        self.Play(animationNameA, timeA, masksA);
+        var verticesA = self.vertices;
+        self.Play(animationNameB, timeB, masksB);
+        var verticesB = self.vertices;
+
+        for (int i = 0; i < verticesA.Length; i++)
         {
-            int preFrame = -1;
-            int nextFrame = -1;
-            
-            for (int i = 0; i < keys.Count; i++)
-            {
-                if (keys[i].Time <= time)
-                {
-                    preFrame = i;
-                }
-                // 这里是>=能在关键帧上时preFrame = nextFrame
-                if (keys[i].Time >= time)
-                {
-                    nextFrame = i;
-                    break;
-                }
-            }
-            if (preFrame == -1 || nextFrame == -1 || nextFrame < preFrame)
-            {
-                Log.Instance.Error($"动画计算关键帧有问题: PreFrame: {preFrame}, NextFrame: {nextFrame}");
-            }
-
-            if (preFrame == nextFrame)
-            {
-                return keys[preFrame].Value.ToVector3();
-            }
-
-            float lerp = (float)((time - keys[preFrame].Time) / (keys[nextFrame].Time - keys[preFrame].Time));
-            return System.Numerics.Vector3.Lerp(keys[preFrame].Value.ToVector3(), keys[nextFrame].Value.ToVector3(), lerp);
+            self.vertices[i] = Lerp(verticesA[i], verticesB[i], rate);
         }
-        static System.Numerics.Quaternion SLerp(float time, List<QuaternionKey> keys)
+    }
+
+    static ShadingVertex Lerp(ShadingVertex a, ShadingVertex b, float t)
+    {
+        ShadingVertex result = new ShadingVertex();
+        result.position = Vector3.Lerp(a.position, b.position, t);
+        result.normal = Vector3.Lerp(a.normal, b.normal, t);
+        result.uv = Vector2.Lerp(a.uv, b.uv, t);
+        return result;
+    }
+    static System.Numerics.Vector3 Lerp(float time, List<VectorKey> keys)
+    {
+        int preFrame = -1;
+        int nextFrame = -1;
+
+        for (int i = 0; i < keys.Count; i++)
         {
-            int preFrame = -1;
-            int nextFrame = -1;
-            
-            for (int i = 0; i < keys.Count; i++)
+            if (keys[i].Time <= time)
             {
-                if (keys[i].Time <= time)
-                {
-                    preFrame = i;
-                }
-                // 这里是>=能在关键帧上时preFrame = nextFrame
-                if (keys[i].Time >= time)
-                {
-                    nextFrame = i;
-                    break;
-                }
-            }
-            if (preFrame == -1 || nextFrame == -1 || nextFrame < preFrame)
-            {
-                Log.Instance.Error($"动画计算关键帧有问题: PreFrame: {preFrame}, NextFrame: {nextFrame}");
-            }
-            
-            if (preFrame == nextFrame)
-            {
-                return keys[preFrame].Value.ToQuaternion();
+                preFrame = i;
             }
 
-            float lerp = (float)((time - keys[preFrame].Time) / (keys[nextFrame].Time - keys[preFrame].Time));
-            return System.Numerics.Quaternion.Slerp(keys[preFrame].Value.ToQuaternion(), keys[nextFrame].Value.ToQuaternion(), lerp);
+            // 这里是>=能在关键帧上时preFrame = nextFrame
+            if (keys[i].Time >= time)
+            {
+                nextFrame = i;
+                break;
+            }
         }
+
+        if (preFrame == -1 || nextFrame == -1 || nextFrame < preFrame)
+        {
+            Log.Instance.Error($"动画计算关键帧有问题: PreFrame: {preFrame}, NextFrame: {nextFrame}");
+        }
+
+        if (preFrame == nextFrame)
+        {
+            return keys[preFrame].Value.ToVector3();
+        }
+
+        float lerp = (float)((time - keys[preFrame].Time) / (keys[nextFrame].Time - keys[preFrame].Time));
+        return System.Numerics.Vector3.Lerp(keys[preFrame].Value.ToVector3(), keys[nextFrame].Value.ToVector3(), lerp);
+    }
+    static System.Numerics.Quaternion SLerp(float time, List<QuaternionKey> keys)
+    {
+        int preFrame = -1;
+        int nextFrame = -1;
+
+        for (int i = 0; i < keys.Count; i++)
+        {
+            if (keys[i].Time <= time)
+            {
+                preFrame = i;
+            }
+
+            // 这里是>=能在关键帧上时preFrame = nextFrame
+            if (keys[i].Time >= time)
+            {
+                nextFrame = i;
+                break;
+            }
+        }
+
+        if (preFrame == -1 || nextFrame == -1 || nextFrame < preFrame)
+        {
+            Log.Instance.Error($"动画计算关键帧有问题: PreFrame: {preFrame}, NextFrame: {nextFrame}");
+        }
+
+        if (preFrame == nextFrame)
+        {
+            return keys[preFrame].Value.ToQuaternion();
+        }
+
+        float lerp = (float)((time - keys[preFrame].Time) / (keys[nextFrame].Time - keys[preFrame].Time));
+        return System.Numerics.Quaternion.Slerp(keys[preFrame].Value.ToQuaternion(),
+            keys[nextFrame].Value.ToQuaternion(), lerp);
     }
 }

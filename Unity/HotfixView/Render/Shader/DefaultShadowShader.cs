@@ -1,3 +1,4 @@
+using System.Numerics;
 using System.Runtime.InteropServices;
 using Veldrid;
 using Veldrid.SPIRV;
@@ -25,6 +26,9 @@ public class DefaultShadowShader : AShaderHandler
         // Update Uniform Buffer
         DirectionLightComponent light = DirectionLightComponent.Main;
         if (light == null) return null;
+        PerspectiveCameraComponent camera = PerspectiveCameraComponent.Main;
+        if (camera == null) return null;
+        
         TransformComponent transform = meshComponent.GetParent<ViewObject>().GetComponent<TransformComponent>();
         
         (DeviceBuffer mBuffer, ResourceLayoutElementDescription mElement) = renderComponent.device.CreateUniform("M", new Shadow_MUniform() { model = transform.Model });
@@ -74,7 +78,7 @@ public class DefaultShadowShader : AShaderHandler
 
         return info;
     }
-
+    
     public override void Update(RenderComponent renderComponent, MeshComponent meshComponent, MeshRenderInfo info)
     {
         // Update M VP Uniform Buffer

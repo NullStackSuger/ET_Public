@@ -1,35 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\Unity.Model.csproj": {}
+    "D:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj": {}
   },
   "projects": {
-    "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj": {
+    "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj",
+        "projectUniqueName": "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj",
         "projectName": "Unity.Core",
-        "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj",
+        "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\obj\\",
+        "outputPath": "D:\\Rider\\Project\\ET\\Unity\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
               }
             }
           }
@@ -65,39 +63,37 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\Lenovo\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\Unity.Model.csproj": {
+    "D:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\Unity.Model.csproj",
+        "projectUniqueName": "D:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj",
         "projectName": "Unity.Model",
-        "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\Unity.Model.csproj",
+        "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\obj\\",
+        "outputPath": "D:\\Rider\\Project\\ET\\Unity\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj"
               },
-              "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
               }
             }
           }
@@ -133,28 +129,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\Lenovo\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
+    "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj",
+        "projectUniqueName": "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj",
         "projectName": "Unity.ThirdParty",
-        "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj",
+        "projectPath": "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\obj\\",
+        "outputPath": "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -191,6 +185,10 @@
               "target": "Package",
               "version": "[6.0.1, )"
             },
+            "OpenAI": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
             "PhysX.Net": {
               "target": "Package",
               "version": "[5.0.1-alpha1, )",
@@ -213,7 +211,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\Lenovo\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -80,4 +80,9 @@ public class PrepareRenderPass : ARenderPassHandler
 
         renderComponent.Set("Objs", objs.ToArray());
     }
+
+    public override void LateUpdate(RenderComponent renderComponent)
+    {
+        
+    }
 }

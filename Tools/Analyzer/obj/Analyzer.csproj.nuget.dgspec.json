@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Rider\\Project\\ET_Public\\Tools\\Analyzer\\Analyzer.csproj": {}
+    "D:\\Rider\\Project\\ET\\Tools\\Analyzer\\Analyzer.csproj": {}
   },
   "projects": {
-    "D:\\Rider\\Project\\ET_Public\\Tools\\Analyzer\\Analyzer.csproj": {
+    "D:\\Rider\\Project\\ET\\Tools\\Analyzer\\Analyzer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rider\\Project\\ET_Public\\Tools\\Analyzer\\Analyzer.csproj",
+        "projectUniqueName": "D:\\Rider\\Project\\ET\\Tools\\Analyzer\\Analyzer.csproj",
         "projectName": "Analyzer",
-        "projectPath": "D:\\Rider\\Project\\ET_Public\\Tools\\Analyzer\\Analyzer.csproj",
+        "projectPath": "D:\\Rider\\Project\\ET\\Tools\\Analyzer\\Analyzer.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Rider\\Project\\ET_Public\\Tools\\Analyzer\\obj\\",
+        "outputPath": "D:\\Rider\\Project\\ET\\Tools\\Analyzer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -69,7 +67,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Users\\Lenovo\\.dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     }

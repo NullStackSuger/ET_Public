@@ -22,6 +22,24 @@ public class TransformComponent : Entity, IAwake<Vector3, Quaternion, Vector3>, 
         }
         get => Vector3.Transform(Vector3.Zero, Model);
     }
+    public Quaternion worldRotation
+    {
+        get
+        {
+            Quaternion rot = this.localRotation;
+            Entity obj = this.Parent;
+            Entity current = obj.Parent;
+            while (current != null)
+            {
+                if (current.GetComponent(out TransformComponent transform))
+                {
+                    rot = transform.localRotation * rot;
+                }
+                current = current.Parent;
+            }
+            return rot;
+        }
+    }
 
     public Matrix4x4 Local => Matrix4x4.CreateScale(localScale) * 
                               Matrix4x4.CreateFromQuaternion(localRotation) * 
@@ -37,7 +55,7 @@ public class TransformComponent : Entity, IAwake<Vector3, Quaternion, Vector3>, 
             {
                 if (current.GetComponent(out TransformComponent transform))
                 {
-                    matrix *= transform.Local;
+                    matrix = transform.Local * matrix;
                 }
                 current = current.Parent;
             }

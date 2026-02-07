@@ -46,6 +46,12 @@ public static partial class RenderComponentSystem
             
         self.device.SubmitCommands(self.commandList);
         self.device.SwapBuffers();
+        
+        foreach (Type type in self.types)
+        {
+            ARenderPassHandler handler = RenderPassDispatcher.Instance[type];
+            handler.LateUpdate(self);
+        }
     }
 
     public static T Get<T>(this RenderComponent self, string name)
@@ -57,6 +63,21 @@ public static partial class RenderComponentSystem
         else
         {
             return default;
+        }
+    }
+
+    public static bool TryGet<T>(this RenderComponent self, string name, out T value)
+    {
+        self.dic.TryGetValue(name, out var rawValue);
+        if (rawValue is not T tValue)
+        {
+            value = default;
+            return false;
+        }
+        else
+        {
+            value = tValue;
+            return true;
         }
     }
 

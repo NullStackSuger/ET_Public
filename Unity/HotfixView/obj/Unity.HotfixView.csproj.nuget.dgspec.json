@@ -1,35 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Rider\\Project\\ET_Public\\Unity\\HotfixView\\Unity.HotfixView.csproj": {}
+    "D:\\Rider\\Project\\ET\\Unity\\HotfixView\\Unity.HotfixView.csproj": {}
   },
   "projects": {
-    "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj": {
+    "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj",
+        "projectUniqueName": "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj",
         "projectName": "Unity.Core",
-        "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj",
+        "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\obj\\",
+        "outputPath": "D:\\Rider\\Project\\ET\\Unity\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
               }
             }
           }
@@ -65,48 +63,46 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\Lenovo\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Rider\\Project\\ET_Public\\Unity\\HotfixView\\Unity.HotfixView.csproj": {
+    "D:\\Rider\\Project\\ET\\Unity\\HotfixView\\Unity.HotfixView.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rider\\Project\\ET_Public\\Unity\\HotfixView\\Unity.HotfixView.csproj",
+        "projectUniqueName": "D:\\Rider\\Project\\ET\\Unity\\HotfixView\\Unity.HotfixView.csproj",
         "projectName": "Unity.HotfixView",
-        "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\HotfixView\\Unity.HotfixView.csproj",
+        "projectPath": "D:\\Rider\\Project\\ET\\Unity\\HotfixView\\Unity.HotfixView.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Rider\\Project\\ET_Public\\Unity\\HotfixView\\obj\\",
+        "outputPath": "D:\\Rider\\Project\\ET\\Unity\\HotfixView\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj"
               },
-              "D:\\Rider\\Project\\ET_Public\\Unity\\Hotfix\\Unity.Hotfix.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Hotfix\\Unity.Hotfix.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\Hotfix\\Unity.Hotfix.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Hotfix\\Unity.Hotfix.csproj"
               },
-              "D:\\Rider\\Project\\ET_Public\\Unity\\ModelView\\Unity.ModelView.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ModelView\\Unity.ModelView.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\ModelView\\Unity.ModelView.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\ModelView\\Unity.ModelView.csproj"
               },
-              "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\Unity.Model.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\Unity.Model.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj"
               },
-              "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
               }
             }
           }
@@ -127,9 +123,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "CjClutter.ObjLoader": {
+            "AssimpNet": {
               "target": "Package",
-              "version": "[1.0.0, )"
+              "version": "[5.0.0-beta1, )"
             },
             "ImGui.NET": {
               "target": "Package",
@@ -140,6 +136,10 @@
               "version": "[2.2.1, )"
             },
             "Veldrid": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            },
+            "Veldrid.ImageSharp": {
               "target": "Package",
               "version": "[4.9.0, )"
             },
@@ -172,42 +172,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\Lenovo\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Rider\\Project\\ET_Public\\Unity\\Hotfix\\Unity.Hotfix.csproj": {
+    "D:\\Rider\\Project\\ET\\Unity\\Hotfix\\Unity.Hotfix.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rider\\Project\\ET_Public\\Unity\\Hotfix\\Unity.Hotfix.csproj",
+        "projectUniqueName": "D:\\Rider\\Project\\ET\\Unity\\Hotfix\\Unity.Hotfix.csproj",
         "projectName": "Unity.Hotfix",
-        "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Hotfix\\Unity.Hotfix.csproj",
+        "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Hotfix\\Unity.Hotfix.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Hotfix\\obj\\",
+        "outputPath": "D:\\Rider\\Project\\ET\\Unity\\Hotfix\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj"
               },
-              "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\Unity.Model.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\Unity.Model.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj"
               },
-              "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
               }
             }
           }
@@ -243,42 +241,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\Lenovo\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Rider\\Project\\ET_Public\\Unity\\ModelView\\Unity.ModelView.csproj": {
+    "D:\\Rider\\Project\\ET\\Unity\\ModelView\\Unity.ModelView.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rider\\Project\\ET_Public\\Unity\\ModelView\\Unity.ModelView.csproj",
+        "projectUniqueName": "D:\\Rider\\Project\\ET\\Unity\\ModelView\\Unity.ModelView.csproj",
         "projectName": "Unity.ModelView",
-        "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ModelView\\Unity.ModelView.csproj",
+        "projectPath": "D:\\Rider\\Project\\ET\\Unity\\ModelView\\Unity.ModelView.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ModelView\\obj\\",
+        "outputPath": "D:\\Rider\\Project\\ET\\Unity\\ModelView\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj"
               },
-              "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\Unity.Model.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\Unity.Model.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj"
               },
-              "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
               }
             }
           }
@@ -299,6 +295,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AssimpNet": {
+              "target": "Package",
+              "version": "[5.0.0-beta1, )"
+            },
             "ImGui.NET": {
               "target": "Package",
               "version": "[1.91.6.1, )"
@@ -306,6 +306,10 @@
             "NAudio.Extras": {
               "target": "Package",
               "version": "[2.2.1, )"
+            },
+            "OptimizedPriorityQueue": {
+              "target": "Package",
+              "version": "[5.1.0, )"
             },
             "Veldrid": {
               "target": "Package",
@@ -332,39 +336,37 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\Lenovo\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\Unity.Model.csproj": {
+    "D:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\Unity.Model.csproj",
+        "projectUniqueName": "D:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj",
         "projectName": "Unity.Model",
-        "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\Unity.Model.csproj",
+        "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Model\\Unity.Model.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Model\\obj\\",
+        "outputPath": "D:\\Rider\\Project\\ET\\Unity\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\Core\\Unity.Core.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\Core\\Unity.Core.csproj"
               },
-              "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
-                "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
+              "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
+                "projectPath": "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj"
               }
             }
           }
@@ -400,28 +402,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\Lenovo\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
+    "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj",
+        "projectUniqueName": "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj",
         "projectName": "Unity.ThirdParty",
-        "projectPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\Unity.ThirdParty.csproj",
+        "projectPath": "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\Unity.ThirdParty.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Rider\\Project\\ET_Public\\Unity\\ThirdParty\\obj\\",
+        "outputPath": "D:\\Rider\\Project\\ET\\Unity\\ThirdParty\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -458,6 +458,10 @@
               "target": "Package",
               "version": "[6.0.1, )"
             },
+            "OpenAI": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
             "PhysX.Net": {
               "target": "Package",
               "version": "[5.0.1-alpha1, )",
@@ -480,7 +484,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\Lenovo\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

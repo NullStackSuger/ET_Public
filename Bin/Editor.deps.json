@@ -19,14 +19,36 @@
           "Editor.dll": {}
         }
       },
-      "CjClutter.ObjLoader/1.0.0": {
+      "AssimpNet/5.0.0-beta1": {
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         },
         "runtime": {
-          "lib/netstandard1.4/CjClutter.ObjLoader.Loader.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+          "lib/netstandard1.3/AssimpNet.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libassimp.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libassimp.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/assimp.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "5.0.0.0"
+          },
+          "runtimes/win-x86/native/assimp.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "5.0.0.0"
           }
         }
       },
@@ -127,6 +149,14 @@
           }
         }
       },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1024.46610"
+          }
+        }
+      },
       "Microsoft.Extensions.DependencyModel/2.0.3": {
         "dependencies": {
           "Microsoft.DotNet.PlatformAbstractions": "2.0.3",
@@ -142,11 +172,14 @@
           }
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/2.0.0": {
+      "Microsoft.Extensions.Logging.Abstractions/8.0.3": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2"
+        },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.17205"
+          "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1325.6609"
           }
         }
       },
@@ -180,7 +213,7 @@
       "MongoDB.Driver/3.4.0": {
         "dependencies": {
           "DnsClient": "1.6.1",
-          "Microsoft.Extensions.Logging.Abstractions": "2.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
           "MongoDB.Bson": "3.4.0",
           "SharpCompress": "0.30.1",
           "Snappier": "1.0.0",
@@ -375,6 +408,25 @@
           }
         }
       },
+      "OpenAI/2.3.0": {
+        "dependencies": {
+          "System.ClientModel": "1.5.1"
+        },
+        "runtime": {
+          "lib/net8.0/OpenAI.dll": {
+            "assemblyVersion": "2.3.0.0",
+            "fileVersion": "2.3.0.0"
+          }
+        }
+      },
+      "OptimizedPriorityQueue/5.1.0": {
+        "runtime": {
+          "lib/netstandard1.0/PriorityQueue.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
       "PhysX.Net/5.0.1-alpha1": {
         "runtime": {
           "lib/net8.0/PhysX.Net.dll": {
@@ -505,6 +557,14 @@
           }
         }
       },
+      "SixLabors.ImageSharp/1.0.4": {
+        "runtime": {
+          "lib/netcoreapp3.1/SixLabors.ImageSharp.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.4.0"
+          }
+        }
+      },
       "Snappier/1.0.0": {
         "runtime": {
           "lib/net5.0/Snappier.dll": {
@@ -519,6 +579,18 @@
         }
       },
       "System.Buffers/4.5.1": {},
+      "System.ClientModel/1.5.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
+          "System.Memory.Data": "8.0.1"
+        },
+        "runtime": {
+          "lib/net8.0/System.ClientModel.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.500.125.36405"
+          }
+        }
+      },
       "System.Collections/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "5.0.0",
@@ -712,6 +784,14 @@
         }
       },
       "System.Memory/4.5.5": {},
+      "System.Memory.Data/8.0.1": {
+        "runtime": {
+          "lib/net8.0/System.Memory.Data.dll": {
+            "assemblyVersion": "8.0.0.1",
+            "fileVersion": "8.0.1024.46610"
+          }
+        }
+      },
       "System.Net.Http/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "5.0.0",
@@ -1117,6 +1197,18 @@
           }
         }
       },
+      "Veldrid.ImageSharp/4.9.0": {
+        "dependencies": {
+          "SixLabors.ImageSharp": "1.0.4",
+          "Veldrid": "4.9.0"
+        },
+        "runtime": {
+          "lib/net6.0/Veldrid.ImageSharp.dll": {
+            "assemblyVersion": "4.9.0.0",
+            "fileVersion": "4.9.0.120"
+          }
+        }
+      },
       "Veldrid.MetalBindings/4.9.0": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
@@ -1317,7 +1409,7 @@
       },
       "Unity.HotfixView/1.0.0": {
         "dependencies": {
-          "CjClutter.ObjLoader": "1.0.0",
+          "AssimpNet": "5.0.0-beta1",
           "ImGui.NET": "1.91.6.1",
           "NAudio.Extras": "2.2.1",
           "Unity.Core": "1.0.0",
@@ -1326,6 +1418,7 @@
           "Unity.ModelView": "1.0.0",
           "Unity.ThirdParty": "1.0.0",
           "Veldrid": "4.9.0",
+          "Veldrid.ImageSharp": "4.9.0",
           "Veldrid.SDL2": "4.9.0",
           "Veldrid.SPIRV": "1.0.15",
           "Veldrid.StartupUtilities": "4.9.0"
@@ -1351,8 +1444,10 @@
       },
       "Unity.ModelView/1.0.0": {
         "dependencies": {
+          "AssimpNet": "5.0.0-beta1",
           "ImGui.NET": "1.91.6.1",
           "NAudio.Extras": "2.2.1",
+          "OptimizedPriorityQueue": "5.1.0",
           "Unity.Core": "1.0.0",
           "Unity.Model": "1.0.0",
           "Unity.ThirdParty": "1.0.0",
@@ -1371,6 +1466,7 @@
           "CommandLineParser": "2.9.1",
           "MongoDB.Driver": "3.4.0",
           "NLog": "6.0.1",
+          "OpenAI": "2.3.0",
           "PhysX.Net": "5.0.1-alpha1"
         },
         "runtime": {
@@ -1388,12 +1484,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "CjClutter.ObjLoader/1.0.0": {
+    "AssimpNet/5.0.0-beta1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-yTcKHBQcX0fu36zV1itp0KDXA3ynp0nlfVihczRgRyQ+e4oxOjYE5Prj32zFg2ABPRXJ5ZER2AqdHeZ/IHjRWQ==",
-      "path": "cjclutter.objloader/1.0.0",
-      "hashPath": "cjclutter.objloader.1.0.0.nupkg.sha512"
+      "sha512": "sha512-oiUmn2KNaLThdbr6oT461uyCwclsqfZ0UB36vqkAUm8ttBWjKOCBmtp9V+X6xDGZmQaJe9YknW5eoyATTikUNQ==",
+      "path": "assimpnet/5.0.0-beta1",
+      "hashPath": "assimpnet.5.0.0-beta1.nupkg.sha512"
     },
     "CommandLineParser/2.9.1": {
       "type": "package",
@@ -1430,6 +1526,13 @@
       "path": "microsoft.dotnet.platformabstractions/2.0.3",
       "hashPath": "microsoft.dotnet.platformabstractions.2.0.3.nupkg.sha512"
     },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3iE7UF7MQkCv1cxzCahz+Y/guQbTqieyxyaWKhrRO91itI9cOKO76OHeQDahqG4MmW5umr3CcCvGmK92lWNlbg==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.2",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512"
+    },
     "Microsoft.Extensions.DependencyModel/2.0.3": {
       "type": "package",
       "serviceable": true,
@@ -1437,12 +1540,12 @@
       "path": "microsoft.extensions.dependencymodel/2.0.3",
       "hashPath": "microsoft.extensions.dependencymodel.2.0.3.nupkg.sha512"
     },
-    "Microsoft.Extensions.Logging.Abstractions/2.0.0": {
+    "Microsoft.Extensions.Logging.Abstractions/8.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6ZCllUYGFukkymSTx3Yr0G/ajRxoNJp7/FqSxSB4fGISST54ifBhgu4Nc0ItGi3i6DqwuNd8SUyObmiC++AO2Q==",
-      "path": "microsoft.extensions.logging.abstractions/2.0.0",
-      "hashPath": "microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512"
+      "sha512": "sha512-dL0QGToTxggRLMYY4ZYX5AMwBb+byQBd/5dMiZE07Nv73o6I5Are3C7eQTh7K2+A4ct0PVISSr7TZANbiNb2yQ==",
+      "path": "microsoft.extensions.logging.abstractions/8.0.3",
+      "hashPath": "microsoft.extensions.logging.abstractions.8.0.3.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/5.0.0": {
       "type": "package",
@@ -1562,6 +1665,20 @@
       "sha512": "sha512-qDWiqy8/xdpZKtHna/645KbalwP86N2NFJEzfqhcv+Si4V2iNaEfR/dCneuF/4+Dcwl3f7jHMXj3ndWYftV3Ug==",
       "path": "nlog/6.0.1",
       "hashPath": "nlog.6.0.1.nupkg.sha512"
+    },
+    "OpenAI/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-z+fNKKSEsIelpR3swPJe+yFLlD1z+PGvpfbQgRWP1g1A++C5QvoGMnCtCj+H+0gw2E+VYIjt9G0fk3oixpvWrQ==",
+      "path": "openai/2.3.0",
+      "hashPath": "openai.2.3.0.nupkg.sha512"
+    },
+    "OptimizedPriorityQueue/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0AnX6kAs0GiLrSqrHKe5mpQhJSHTmXeqLNucV2CxGATP/I9UzLMc1N4MtS/z8qB6mcgX61OjHdY3YbOmETGs+A==",
+      "path": "optimizedpriorityqueue/5.1.0",
+      "hashPath": "optimizedpriorityqueue.5.1.0.nupkg.sha512"
     },
     "PhysX.Net/5.0.1-alpha1": {
       "type": "package",
@@ -1710,6 +1827,13 @@
       "path": "sharpgen.runtime.com/2.0.0-beta.13",
       "hashPath": "sharpgen.runtime.com.2.0.0-beta.13.nupkg.sha512"
     },
+    "SixLabors.ImageSharp/1.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-H2rPiEr2ddBOltOuqRYhpLBAsQXDAhbzMMhhuksnBG2oefup1MXMchALe7yYkKJksNbtxbZHKeM6dn/68I75qw==",
+      "path": "sixlabors.imagesharp/1.0.4",
+      "hashPath": "sixlabors.imagesharp.1.0.4.nupkg.sha512"
+    },
     "Snappier/1.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1730,6 +1854,13 @@
       "sha512": "sha512-Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
       "path": "system.buffers/4.5.1",
       "hashPath": "system.buffers.4.5.1.nupkg.sha512"
+    },
+    "System.ClientModel/1.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-k2jKSO0X45IqhVOT9iQB4xralNN9foRQsRvXBTyRpAVxyzCJlG895T9qYrQWbcJ6OQXxOouJQ37x5nZH5XKK+A==",
+      "path": "system.clientmodel/1.5.1",
+      "hashPath": "system.clientmodel.1.5.1.nupkg.sha512"
     },
     "System.Collections/4.3.0": {
       "type": "package",
@@ -1863,6 +1994,13 @@
       "sha512": "sha512-XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
       "path": "system.memory/4.5.5",
       "hashPath": "system.memory.4.5.5.nupkg.sha512"
+    },
+    "System.Memory.Data/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BVYuec3jV23EMRDeR7Dr1/qhx7369dZzJ9IWy2xylvb4YfXsrUxspWc4UWYid/tj4zZK58uGZqn2WQiaDMhmAg==",
+      "path": "system.memory.data/8.0.1",
+      "hashPath": "system.memory.data.8.0.1.nupkg.sha512"
     },
     "System.Net.Http/4.3.0": {
       "type": "package",
@@ -2143,6 +2281,13 @@
       "sha512": "sha512-Rvu7/OLNt6Yy/hbC+rAmjBbxcSirbG/BjOdLCF7kl5mGBkMGka3pLuTlkbXSt4UONh3tks0I7k/OJ7Sr8HFIoA==",
       "path": "veldrid/4.9.0",
       "hashPath": "veldrid.4.9.0.nupkg.sha512"
+    },
+    "Veldrid.ImageSharp/4.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yrhNrYA5FXZWWjmopXUCP9sEMxEjJmzzDkSBWq3cPWKOvzYQ9wXPkRlkj9cRljmhqQCkBH2gC2wtl6ddsjE50w==",
+      "path": "veldrid.imagesharp/4.9.0",
+      "hashPath": "veldrid.imagesharp.4.9.0.nupkg.sha512"
     },
     "Veldrid.MetalBindings/4.9.0": {
       "type": "package",

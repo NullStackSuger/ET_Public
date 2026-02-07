@@ -18,6 +18,17 @@ public static partial class OrthographicCameraComponentSystem
         self.far = far;
     }
     
+    [EntitySystem]
+    private static void Awake(this OrthographicCameraComponent self, Vector4 size, float near, float far)
+    {
+        self.left = size.X;
+        self.right = size.Y;
+        self.bottom = size.Z;
+        self.top = size.W;
+        self.near = near;
+        self.far = far;
+    }
+    
     public static ViewObject ViewObject(this OrthographicCameraComponent self)
     {
         return self.GetParent<ViewObject>();
@@ -52,6 +63,18 @@ public static partial class OrthographicCameraComponentSystem
         mat.M41 = -(self.right + self.left) / (self.right - self.left);
         mat.M42 = -(self.top + self.bottom) / (self.top - self.bottom);
         mat.M43 = -self.near / (self.far - self.near);
+        return mat;
+    }
+    
+    public static Matrix4x4 Projection(float left, float right, float bottom, float top, float near, float far)
+    {
+        Matrix4x4 mat = Matrix4x4.Identity;
+        mat.M11 = 2.0f / (right - left);
+        mat.M22 = 2.0f / (top - bottom);
+        mat.M33 = 1.0f / (far - near);
+        mat.M41 = -(right + left) / (right - left);
+        mat.M42 = -(top + bottom) / (top - bottom);
+        mat.M43 = -near / (far - near);
         return mat;
     }
     

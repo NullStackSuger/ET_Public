@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Rider\\Project\\ET_Public\\Tools\\SourceGenerator\\SourceGenerator.csproj": {}
+    "D:\\Rider\\Project\\ET\\Tools\\SourceGenerator\\SourceGenerator.csproj": {}
   },
   "projects": {
-    "D:\\Rider\\Project\\ET_Public\\Tools\\SourceGenerator\\SourceGenerator.csproj": {
+    "D:\\Rider\\Project\\ET\\Tools\\SourceGenerator\\SourceGenerator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rider\\Project\\ET_Public\\Tools\\SourceGenerator\\SourceGenerator.csproj",
+        "projectUniqueName": "D:\\Rider\\Project\\ET\\Tools\\SourceGenerator\\SourceGenerator.csproj",
         "projectName": "SourceGenerator",
-        "projectPath": "D:\\Rider\\Project\\ET_Public\\Tools\\SourceGenerator\\SourceGenerator.csproj",
+        "projectPath": "D:\\Rider\\Project\\ET\\Tools\\SourceGenerator\\SourceGenerator.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Rider\\Project\\ET_Public\\Tools\\SourceGenerator\\obj\\",
+        "outputPath": "D:\\Rider\\Project\\ET\\Tools\\SourceGenerator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -75,7 +73,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Users\\Lenovo\\.dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     }

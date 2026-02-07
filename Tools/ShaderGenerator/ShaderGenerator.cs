@@ -17,18 +17,24 @@ public static class ShaderGenerator
     {
         var list = new List<string>();
 
-        if (Directory.Exists(target))
-        {
-            list.AddRange(Directory.GetFiles(target, "*.vert"));
-            list.AddRange(Directory.GetFiles(target, "*.frag"));
-        }
-
-        foreach (string name in list)
-        {
-            Console.WriteLine($"处理Shader: {name}");
-        }
+        FindInner(target, ref list);
         
         return list.ToArray();
+
+        static void FindInner(string target, ref List<string> list)
+        {
+            if (Directory.Exists(target))
+            {
+                list.AddRange(Directory.GetFiles(target, "*.vert"));
+                list.AddRange(Directory.GetFiles(target, "*.frag"));
+                list.AddRange(Directory.GetFiles(target, "*.comp"));
+
+                foreach (string directory in Directory.GetDirectories(target))
+                {
+                    FindInner(directory, ref list);
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -54,7 +60,16 @@ public static class ShaderGenerator
                 RedirectStandardError = true
             };
             process.Start();
+            
+            // 读取输出和错误信息
+            string error = process.StandardError.ReadToEnd();
+            
             process.WaitForExit();
+            
+            if (process.ExitCode != 0)
+            {
+                Console.WriteLine($"{fileName}{extension} 编译失败 ({process.ExitCode})\r\n{error}");
+            }
         }
     }
     
@@ -102,11 +117,6 @@ public static class ShaderGenerator
 
         // 写入文件
         File.WriteAllLines(PathHelper.Vertex, generatedCode);
-        /*Console.WriteLine();
-        foreach (string s in generatedCode)
-        {
-            Console.WriteLine(s);
-        }*/
         
         static List<(int, string, string)> FindInput(string shaderContent)
         {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "srx0F3Y+/Co=",
+  "dgSpecHash": "xVWWljjdpqI=",
   "success": true,
-  "projectFilePath": "D:\\Rider\\Project\\ET_Public\\Tools\\LubanGenerator\\LubanGenerator.csproj",
+  "projectFilePath": "D:\\Rider\\Project\\ET\\Tools\\LubanGenerator\\LubanGenerator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\enums.net\\4.0.1\\enums.net.4.0.1.nupkg.sha512",

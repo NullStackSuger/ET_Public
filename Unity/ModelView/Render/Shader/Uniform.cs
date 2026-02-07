@@ -39,6 +39,39 @@ public partial struct Shadow_VPUniform
 
 
 [StructLayout(LayoutKind.Sequential)]
+public partial struct PostProcess_CameraUniform
+{
+    public Matrix4x4 view;
+    public Matrix4x4 projection;
+    public Vector4 worldPos;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct PostProcess_LightUniform
+{
+    public Matrix4x4 view;
+    public Matrix4x4 projection;
+    public Vector3 dir;
+    public float intensity;
+    public Vector4 color;
+    public Vector4 worldPos;
+}
+
+[StructLayout(LayoutKind.Sequential)]
+public partial struct PostProcess_AtmosParamsUniform
+{
+    public float planetRadius;
+    public float topRadius;
+    public float rayleighScaleH;
+    public float mieScaleH;
+    public Vector3 betaRayleigh;
+    public float padding;
+    public Vector3 betaMie;
+    public float mieG;
+}
+
+
+[StructLayout(LayoutKind.Sequential)]
 public partial struct Shading_LightUniform
 {
     public Matrix4x4 view;
@@ -52,6 +85,8 @@ public partial struct Shading_LightUniform
 [StructLayout(LayoutKind.Sequential)]
 public partial struct Shading_CameraUniform
 {
+    public Matrix4x4 view;
+    public Matrix4x4 projection;
     public Vector4 worldPos;
 }
 

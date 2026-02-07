@@ -10,8 +10,7 @@ public static partial class UiComponentSystem
     [EntitySystem]
     private static void Awake(this UiComponent self, int a, int b, GraphicsDevice c)
     {
-        Framebuffer framebuffer = self.Scene().GetComponent<RenderComponent>().Get<Framebuffer>("ShadingFramebuffer");
-        if (framebuffer == null)
+        if (!self.Scene().GetComponent<RenderComponent>().TryGet("ShadingFramebuffer", out Framebuffer framebuffer))
         {
             Log.Instance.Error($"Framebuffer is null");
             return;

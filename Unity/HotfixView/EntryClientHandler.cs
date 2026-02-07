@@ -13,7 +13,7 @@ public class EntryClientHandler : AEvent<Scene, EntryClient>
         WindowComponent window = currentScene.AddComponent<WindowComponent>();
         currentScene.AddComponent<InputComponent>();
         currentScene.AddComponent<ViewObjectComponent>();
-        RenderComponent render = currentScene.AddComponent<RenderComponent, Type[]>([typeof(PrepareRenderPass), typeof(ShadowRenderPass), typeof(ShadingRenderPass), typeof(UiRenderPass)]);
+        RenderComponent render = currentScene.AddComponent<RenderComponent, Type[]>([typeof(PrepareRenderPass), typeof(ShadowRenderPass), typeof(ShadingRenderPass), typeof(PostProcessRenderPass), typeof(UiRenderPass)]);
         currentScene.AddComponent<UiComponent, int, int, GraphicsDevice>(window.window.Width, window.window.Height, render.device);
 
         TestScene(currentScene);

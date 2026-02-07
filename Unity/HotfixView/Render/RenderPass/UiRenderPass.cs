@@ -14,8 +14,7 @@ public class UiRenderPass : ARenderPassHandler
         UiComponent uis = scene.GetComponent<UiComponent>();
         InputSnapshot snapshot = scene.GetComponent<InputComponent>().snapshot;
         
-        Framebuffer framebuffer = renderComponent.Get<Framebuffer>("ShadingFramebuffer");
-        if (framebuffer == null) return;
+        if (!renderComponent.TryGet("ShadingFramebuffer", out Framebuffer framebuffer)) return;
         renderComponent.commandList.SetFramebuffer(framebuffer);
         renderComponent.commandList.ClearColorTarget(0, new RgbaFloat(0.1f, 0.1f, 0.1f, 1.0f));
         
@@ -32,5 +31,10 @@ public class UiRenderPass : ARenderPassHandler
         }
         
         uis.uiController.Render(renderComponent.device, renderComponent.commandList);
+    }
+
+    public override void LateUpdate(RenderComponent renderComponent)
+    {
+        
     }
 }

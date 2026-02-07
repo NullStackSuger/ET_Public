@@ -40,6 +40,49 @@ public static class MathHelper
 
     public static Vector4 ToVector4(this Vector3 v)
     {
-        return new Vector4(v.X, v.Y, v.Z, 0);
+        return new Vector4(v.X, v.Y, v.Z, 1);
+    }
+    public static Vector3 ToVector3(this Vector4 v)
+    {
+        return new Vector3(v.X, v.Y, v.Z);
+    }
+
+    public static Quaternion AngleAxis(float angleRad, Vector3 axis)
+    {
+        axis = Vector3.Normalize(axis);
+        float half = angleRad * 0.5f;
+        float sin = (float)Math.Sin(half);
+        float cos = (float)Math.Cos(half);
+
+        return new Quaternion(
+            axis.X * sin,
+            axis.Y * sin,
+            axis.Z * sin,
+            cos
+        );
+    }
+    
+    public static Vector3 Rotate(Quaternion q, Vector3 v)
+    {
+        // v' = q * v * q^-1
+        Quaternion vQuat = new Quaternion(v, 0f);
+        Quaternion qConj = Quaternion.Conjugate(q);
+        Quaternion result = q * vQuat * qConj;
+        return new Vector3(result.X, result.Y, result.Z);
+    }
+    
+    public static Vector4 Mul(Matrix4x4 m, in Vector4 v)
+    {
+        return new Vector4(
+            m.M11*v.X + m.M12*v.Y + m.M13*v.Z + m.M14*v.W,
+            m.M21*v.X + m.M22*v.Y + m.M23*v.Z + m.M24*v.W,
+            m.M31*v.X + m.M32*v.Y + m.M33*v.Z + m.M34*v.W,
+            m.M41*v.X + m.M42*v.Y + m.M43*v.Z + m.M44*v.W
+        );
+    }
+
+    public static bool Equals(Vector3 v1, Vector3 v2)
+    {
+        return MathF.Abs(v1.X - v2.X) < float.Epsilon && MathF.Abs(v1.Y - v2.Y) < float.Epsilon && MathF.Abs(v1.Z - v2.Z) < float.Epsilon;
     }
 }

@@ -14,7 +14,7 @@ public static partial class ViewEditorComponentSystem
         Scene scene = self.Scene();
         EditorWindowComponent windows = scene.GetComponent<EditorWindowComponent>();
         RenderComponent render = scene.GetComponent<RenderComponent>();
-        Texture result = render.Get<Texture>("ShadingResult");
+        Texture result = render.Get<Texture>("PostProcessResult");
         self.renderView = windows.uiController.GetOrCreateImGuiBinding(render.device.ResourceFactory, render.device.ResourceFactory.CreateTextureView(result));
     }
 
@@ -23,7 +23,7 @@ public static partial class ViewEditorComponentSystem
     {
         Scene scene = self.Scene();
         RenderComponent render = scene.GetComponent<RenderComponent>();
-        Texture result = render.Get<Texture>("ShadingResult");
+        Texture result = render.Get<Texture>("PostProcessResult");
             
         ImGui.Begin(nameof(ViewEditorComponent), ImGuiWindowFlags.MenuBar);
         ImGui.Image(self.renderView, new Vector2(0.5f * result.Width, 0.5f * result.Height));

@@ -10,6 +10,20 @@ using Veldrid;
 
 namespace ET.Client;
 
+public partial struct PostProcessVertex
+{
+    public Vector2 position;
+    public Vector3 dir;
+
+    public static VertexLayoutDescription GetLayout()
+    {
+        return new VertexLayoutDescription(
+            new VertexElementDescription("position", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
+            new VertexElementDescription("dir", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float3)
+        );
+    }
+}
+
 public partial struct ShadingVertex
 {
     public Vector3 position;

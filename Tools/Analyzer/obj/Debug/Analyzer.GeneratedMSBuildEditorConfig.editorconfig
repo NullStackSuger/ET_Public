@@ -1,6 +1,6 @@
 is_global = true
 build_property.RootNamespace = ET.Analyzer
-build_property.ProjectDir = D:\Rider\Project\ET_Public\Tools\Analyzer\
+build_property.ProjectDir = D:\Rider\Project\ET\Tools\Analyzer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false

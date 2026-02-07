@@ -1,0 +1,117 @@
+#version 450
+
+layout(local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
+
+layout(std430, set = 0, binding = 0) buffer InputBuffer
+{
+    uint cubeMapSize;    
+} inputBuffer;
+
+layout(std430, set = 0, binding = 1) buffer OutputBuffer
+{
+    vec4 sh[9]; // sh系数
+} outputBuffer;
+
+layout(set = 0, binding = 2) uniform textureCube environmentMap;
+layout(set = 0, binding = 3) uniform sampler environmentMapSampler;
+
+shared vec4 sharedAcc[64 * 9];
+
+const float PI = 3.14159;
+
+vec3 ToDir(uvec3 id, uint cubeMapSize)
+{
+    float a = ( (float(id.x) + 0.5) / float(cubeMapSize) ) * 2.0 - 1.0;
+    float b = ( (float(id.y) + 0.5) / float(cubeMapSize) ) * 2.0 - 1.0;
+
+    vec3 dir;
+    // 按 OpenGL/Vulkan 常见约定（注意不同实现坐标可能略有差异，必要时调整符号）
+    if (id.z == 0)       dir = normalize(vec3( 1.0,   -b,    -a)); // +X
+    else if (id.z == 1)  dir = normalize(vec3(-1.0,   -b,     a)); // -X
+    else if (id.z == 2)  dir = normalize(vec3(  a,   1.0,     b)); // +Y
+    else if (id.z == 3)  dir = normalize(vec3(  a,  -1.0,    -b)); // -Y
+    else if (id.z == 4)  dir = normalize(vec3(  a,   -b,    1.0)); // +Z
+    else                  dir = normalize(vec3( -a,   -b,   -1.0)); // -Z
+    return dir;
+}
+
+float ToSolidAngle(uvec2 id, uint cubeMapSize)
+{
+    float a = ( (float(id.x) + 0.5) / float(cubeMapSize) ) * 2.0 - 1.0;
+    float b = ( (float(id.y) + 0.5) / float(cubeMapSize) ) * 2.0 - 1.0;
+
+    // 每像素的 solid angle（立体角）：
+    // dΩ = 4 / (N^2 * (1 + u^2 + v^2)^(3/2))
+    float denom = pow(1.0 + a*a + b*b, 1.5);
+    return 4.0 / (float(cubeMapSize) * float(cubeMapSize) * denom);
+}
+
+float[9] EvalSH9(vec3 d)
+{
+    float x = d.x, y = d.y, z = d.z;
+    // 注意：这里选择与 Unity/常见实现一致的实数 SH 常量
+    float Y[9];
+    Y[0] = 0.282095;                    // 0.5*sqrt(1/pi)
+    Y[1] = -0.488603 * y;               // -sqrt(3/(4pi)) * y
+    Y[2] =  0.488603 * z;               //  sqrt(3/(4pi)) * z
+    Y[3] = -0.488603 * x;               // -sqrt(3/(4pi)) * x
+    Y[4] =  1.092548 * x * y;           //  sqrt(15/(4pi)) * xy
+    Y[5] = -1.092548 * y * z;           // -sqrt(15/(4pi)) * yz
+    Y[6] =  0.315392 * (3.0*z*z - 1.0); //  0.25*sqrt(5/pi)*(3z^2-1)
+    Y[7] = -1.092548 * x * z;           // -sqrt(15/(4pi)) * xz
+    Y[8] =  0.546274 * (x*x - y*y);     //  0.5*sqrt(15/pi)*(x^2-y^2)
+    return Y;
+}
+
+vec3 ShadeSH9(vec3 worldNormal, vec4 sh[9])
+{
+    float shBasis[9] = EvalSH9(worldNormal); // 计算球谐基函数值
+
+    vec3 irradiance = vec3(0.0);
+    for (int i = 0; i < 9; ++i)
+    {
+        irradiance += sh[i].xyz * shBasis[i];
+    }
+
+    vec3 diffuse = 1 / PI * irradiance;
+    
+    return diffuse;
+}
+
+void main()
+{
+    uvec3 id = gl_GlobalInvocationID;
+    if (id.x != 0 || id.y != 0 || id.z != 0) return;
+
+    vec3 accum[9];
+    for (uint face = 0u; face < 6u; ++face)
+    {
+        for (uint y = 0u; y < inputBuffer.cubeMapSize; ++y)
+        {
+            for (uint x = 0u; x < inputBuffer.cubeMapSize; ++x)
+            {
+                vec3 dir = ToDir(uvec3(x, y, face), inputBuffer.cubeMapSize);
+                vec3 color = texture(samplerCube(environmentMap, environmentMapSampler), dir).rgb;
+                float dOmega = ToSolidAngle(uvec2(x, y), inputBuffer.cubeMapSize);
+
+                float Y[9] = EvalSH9(dir);
+
+                for (int k = 0; k < 9; ++k)
+                {
+                    accum[k] += color * (Y[k] * dOmega);
+                }
+            }
+        }
+    }
+    // accum[] 现在是 radiance-SH coefficients: c_k = ∫ L(ω) Y_k(ω) dω
+    // 为了直接用于漫反射（irradiance），乘上卷积因子 A_l：
+    // l = 0 -> A0 = PI
+    // l = 1 -> A1 = 2PI/3
+    // l = 2 -> A2 = PI/4
+    for (int k = 0; k < 9; ++k)
+    {
+        float Al = (k == 0) ? PI : ((k >= 1 && k <= 3) ? (2.0 * PI / 3.0) : (PI / 4.0));
+        vec3 irradianceCoeff = Al * accum[k];
+        outputBuffer.sh[k] = vec4(irradianceCoeff, 0.0);
+    }
+}

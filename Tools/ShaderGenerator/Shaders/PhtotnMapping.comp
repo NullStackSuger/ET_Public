@@ -1,0 +1,147 @@
+#version 450
+
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
+
+layout(std430, set = 0, binding = 0) buffer InputBuffer
+{
+    int width;
+    int height;
+    int iteration;
+    float alpha;
+    
+    vec4 light; // xyz: Pos, w: Radiance 
+} inputBuffer;
+
+layout(rgba32f, set = 0, binding = 1) uniform writeonly image2D resultImage;
+
+struct HitPoint 
+{
+    vec3 position;
+    float radius;   // 搜索半径 R
+    vec3 normal;
+    int photonCount; // 累积的光子数 N
+    vec3 flux;      // 累积光能 τ
+    float padding0;
+    vec3 brdf;      // 简化：直接存一个常量 BRDF
+    float padding1;
+};
+
+layout(std430, set = 0, binding = 2) buffer HitPointBuffer 
+{
+    HitPoint hitPoints[];
+};
+
+struct Ray
+{
+    vec3 pos;
+    vec3 dir;
+};
+
+Ray CreateRay(vec3 pos, vec3 dir)
+{
+    Ray ray;
+    ray.pos = pos;
+    ray.dir = dir;
+    return ray;
+}
+Ray CreateRay(uvec2 id, uint w, uint h)
+{
+    vec3 screenPos = vec3(0);
+    vec3 eyeOffset = vec3(0, 0, -1);
+    float dx = 2.0f / w;
+    float yLen = dx * h;
+    vec3 screenLeftDownPos = vec3(-1, -yLen / 2, 0) + 0.5f * vec3(dx, dx, 0);
+    vec3 pos = screenPos + screenLeftDownPos + vec3(id.x * dx, id.y * dx, 0);
+    vec3 dir = normalize(pos - (screenPos + eyeOffset));
+    return CreateRay(pos, dir);
+}
+
+bool SceneIntersect(Ray ray, out vec3 hitPos, out vec3 hitNormal)
+{
+    // BVH
+    return false;
+}
+
+void EyePass(uvec2 pixelID)
+{
+    Ray ray = CreateRay(pixelID, inputBuffer.width, inputBuffer.height);
+
+    vec3 hitPos, hitNormal;
+    if(SceneIntersect(ray, hitPos, hitNormal))
+    {
+        uint id = pixelID.y * inputBuffer.width + pixelID.x;
+        HitPoint hp;
+        hp.position = hitPos;
+        hp.normal = hitNormal;
+        hp.radius = 1.0;
+        hp.flux = vec3(0.0);
+        hp.photonCount = 0;
+        hp.brdf = vec3(0.8);
+        hitPoints[id] = hp;
+    }
+}
+
+// 这是0次Bonce
+void PhotonPass()
+{
+    vec3 lightPos = inputBuffer.light.xyz;
+    
+    uint seed = gl_GlobalInvocationID.x + gl_GlobalInvocationID.y * inputBuffer.width;
+    float theta = fract(sin(seed*12.9898) * 43758.5453) * 2.0 * 3.14159;
+    float z = fract(sin(seed*78.233) * 43758.5453) * 2.0 - 1.0;
+    float r = sqrt(max(0.0, 1.0 - z*z));
+    vec3 dir = normalize(vec3(r*cos(theta), z, r*sin(theta)));
+    Ray ray = CreateRay(lightPos, dir);
+
+    vec3 hitPos, hitNormal;
+    if(SceneIntersect(ray, hitPos, hitNormal))
+    {
+        // 遍历 HitPoints, 找到半径范围内的点
+        for(uint i = 0; i < inputBuffer.width * inputBuffer.height; i++)
+        {
+            HitPoint hp = hitPoints[i];
+            float dist2 = dot(hitPos - hp.position, hitPos - hp.position);
+            if(dist2 <= hp.radius * hp.radius)
+            {
+                // 命中：更新累积光能
+                float cosTerm = max(0.0, dot(-ray.dir, hp.normal));
+                vec3 photonFlux = vec3(1.0) * hp.brdf * cosTerm;
+
+                int M = 1; // 本次命中光子数
+                int N_old = hp.photonCount;
+                int N_new = N_old + M;
+
+                // 渐进式更新半径
+                float R_new = hp.radius * sqrt((N_old + inputBuffer.alpha * M) / float(N_new));
+
+                hp.radius = R_new;
+                hp.photonCount = N_new;
+                hp.flux += photonFlux;
+
+                hitPoints[i] = hp;
+            }
+        }
+    }
+}
+
+void main()
+{
+    uvec2 id = gl_GlobalInvocationID.xy;
+    if (id.x >= inputBuffer.width || id.y >= inputBuffer.height) return;
+    
+    // Init
+    if(inputBuffer.iteration == 0)
+    {
+        EyePass(id);
+    }
+
+    PhotonPass();
+    
+    HitPoint hp = hitPoints[uint(id.x + id.y * inputBuffer.width)];
+    if(hp.photonCount > 0)
+    {
+        vec3 radiance = hp.flux / (3.14159 * hp.radius * hp.radius * hp.photonCount);
+        imageStore(resultImage, ivec2(id), vec4(radiance, 1.0));
+    }
+}
+

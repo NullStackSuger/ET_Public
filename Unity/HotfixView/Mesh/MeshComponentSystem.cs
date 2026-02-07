@@ -133,6 +133,18 @@ public static partial class MeshComponentSystem
         return null;
     }
 
+    public static ViewObject Clone(ViewObject obj, string name)
+    {
+        ViewObjectComponent viewObjectComponent = obj.GetParent<ViewObjectComponent>();
+        TransformComponent transformComponent = obj.GetComponent<TransformComponent>();
+        MeshComponent meshComponent = obj.GetComponent<MeshComponent>();
+        
+        ViewObject cloneObj = viewObjectComponent.AddChild<ViewObject, string>(name);
+        cloneObj.AddComponent<TransformComponent, Vector3, System.Numerics.Quaternion, Vector3>(transformComponent.localPosition, transformComponent.localRotation, transformComponent.localScale);
+        cloneObj.AddComponent<MeshComponent, MeshInfo, Dictionary<Type, Type>>(meshComponent.meshInfo, meshComponent.shaders);
+        return cloneObj;
+    }
+
     public static Vector3 ToVector3(this Vector3D v)
     {
         return new Vector3(v.X, v.Y, v.Z);
