@@ -8,6 +8,8 @@
 
 最终打算做一个能把我OtherPackages库的内容实现的引擎
 
+暂时不会更新了
+
 
 ### 未完成
 
@@ -21,15 +23,11 @@
 
 渲染系统-材质
 
-渲染系统-RenderPass功能(Prepare, ShadowMap, PBR, SoftShadow...)
-
 渲染系统-dic
 
 Entity-反序列化出来的Entity初始化
 
 Ui系统-UGUI
-
-动画系统
 
 网络系统
 
@@ -39,7 +37,7 @@ Ui系统-UGUI
 
 ### 注意
 
-注意bat的格式(换行符)是CRLF, 不然一堆乱码
+注意Luban的bat的格式(换行符)是CRLF, 不然一堆乱码,如果LubanGenerate运行出问题检查一下
 
 Unity.App不会引用Model等 导致一些包会被裁剪, 你需要给Unity.App也加同样的包
 
